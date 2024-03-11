@@ -31,7 +31,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.gitpod.io','.herokuapp.com']
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.gitpod.io',
+    'https://*.herokuapp.com'
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +47,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'bootstrap5',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +63,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'socialproject.urls'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 

@@ -1,0 +1,25 @@
+{% extends 'hub/base.html' %}
+
+
+{% block content %}
+<h1>Welcome to Your Social Feed</h1>
+
+  {% if posts %}
+    <ul>
+    {% for post in posts %}
+      <li>
+        <p>{{ post.content }}</p>
+
+        <p>By: {{ post.user.username }}</p>
+
+        <a href="#">Like</a>
+        <a href="#">Comment</a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts found.</p>
+  {% endif %}
+
+  <a href="{% url 'post_feed' %}">Create a Post</a>
+{% endblock %}
