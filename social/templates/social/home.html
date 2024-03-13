@@ -75,6 +75,7 @@
                     <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
                     <h5><strong>Username:</strong> {{post.author}} <strong>wrote</strong></h5>
                     <p>{{ post.body | slice:":300" }}...</p>
+                    <hr>
                   {% endfor %}
                 {% endblock posts %}
             </div>

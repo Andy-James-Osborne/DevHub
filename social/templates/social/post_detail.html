@@ -1,7 +1,13 @@
 {% extends 'social/home.html' %}
 
 {% block content %}
+    <h1>{{ post.title }}</h1>
+    <h3>{{ post.author }} Posted:</h3>
+    <hr>
     <p>{{ post.body | linebreaks }}</p>
+    <p>{{ post.created_on }}</p>
+    <hr>
+
 
     <h3>Leave a comment:</h3>
     <form method="post">
@@ -14,7 +20,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
+    <hr>
     <h3>Comments:</h3>
     {% for comment in comments %}
         <p>
@@ -26,5 +32,6 @@
         <p>
             On {{ comment.created_on.date }}
         </p>
+        <hr>
     {% endfor %}
 {% endblock %}

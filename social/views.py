@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
+from django.contrib.admin.views.decorators import staff_member_required
 
 def home(request):
     posts = Post.objects.all().order_by("created_on")
@@ -49,8 +50,6 @@ def post_detail(request, pk):
     }
 
     return render(request, "social/post_detail.html", context)
-
-
 
 def signup(request):
     if request.method == 'POST':
