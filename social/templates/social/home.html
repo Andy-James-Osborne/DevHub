@@ -71,12 +71,19 @@
         <div class="row">
             <div class="col-md-8">
                 {% block posts %}
-                  {% for post in posts %}
+                  {% for post in posts reversed %}
                     <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
                     <h5><strong>Username:</strong> {{post.author}} <strong>wrote</strong></h5>
                     <p>{{ post.body | slice:":300" }}...</p>
+                    {% if request.user.is_authenticated and post.author == request.user %}
+                    
+                        <div>
+                            <button class="btn btn-primary"><a href="{% url 'edit_detail' post.pk %}">Edit</a></button><span>  <button class="btn btn-warning"><a href="{% url 'delete_detail' post.pk %}">Delete</a></button></span>
+                        </div>
+                    {% endif %}
                     <hr>
                   {% endfor %}
+
                 {% endblock posts %}
             </div>
             <div class="col-md-4">

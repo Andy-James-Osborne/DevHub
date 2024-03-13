@@ -32,8 +32,12 @@ def create_post(request):
 
 @login_required(login_url="login")
 def post_detail(request, pk):
-    post = Post.objects.get(pk=pk)
-    form = CommentForm()
+    post = get_object_or_404(Post, pk=pk)
+    form = CommentForm()  # Form for comments
+    edit_form = None  # Initialize edit form
+    delete_confirmed = False  # Track deletion confirmation
+
+
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -42,14 +46,37 @@ def post_detail(request, pk):
             comment.author = request.user
             comment.save()
             return redirect('post_detail', pk=post.pk)
+
+    # Check if the request is for editing the post
+        if 'edit_post' in request.POST:
+            edit_form = PostForm(request.POST, instance=post)
+            if edit_form.is_valid():
+                edit_form.save()
+                return redirect('post_detail', pk=post.pk)
+
+        # Check if the request is for deleting the post
+        if 'delete_post' in request.POST:
+            if request.user.is_authenticated and (post.author == request.user or request.user.has_perm('yourapp.change_post')):  # Optional permission check
+                post.delete()
+                return redirect('post_list')  # Redirect to your post list URL
+            else:
+                # Handle unauthorized deletion attempt (optional: message or redirect)
+                pass
+
+
+
     comments = Comment.objects.filter(post=post).order_by('-created_on')
     context = {
         "post": post,
         "comments": comments,
-        "form": CommentForm,
+        "form": form,
+        "edit_form": edit_form,
+        "delete_confirmed": delete_confirmed,
     }
 
     return render(request, "social/post_detail.html", context)
+
+    
 
 def signup(request):
     if request.method == 'POST':
