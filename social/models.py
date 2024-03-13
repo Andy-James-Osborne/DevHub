@@ -21,6 +21,7 @@ class Post(models.Model):
     image = CloudinaryField('post_pictures', default='placeholder')
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     STATUS = ((0, "Draft"), (1, "Published"))
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
@@ -40,6 +41,7 @@ class Comment(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
+    updated_on = models.DateTimeField(auto_now=True)
     class Meta:      
         ordering = ["-created_on"]
 

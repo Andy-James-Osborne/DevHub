@@ -36,21 +36,21 @@ def post_detail(request, pk):
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = Comment(
-                author=form.cleaned_data["author"],
-                body=form.cleaned_data["body"],
-                post=post,
-            )
+            comment = form.save(commit=False) 
+            comment.post = post  
+            comment.author = request.user
             comment.save()
-            return HttpResponseRedirect(request.path_info)
-    comments = Comment.objects.filter(post=post)
+            return redirect('post_detail', pk=post.pk)
+    comments = Comment.objects.filter(post=post).order_by('-created_on')
     context = {
         "post": post,
         "comments": comments,
-        "form": CommentForm(),
+        "form": CommentForm,
     }
 
     return render(request, "social/post_detail.html", context)
+
+
 
 def signup(request):
     if request.method == 'POST':
