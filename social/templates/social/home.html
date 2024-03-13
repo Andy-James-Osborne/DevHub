@@ -66,17 +66,32 @@
             </div>
         </nav>
     </header>
-    <main class="mx-5">
-{% block content %}
-{% block posts %}
-        {% for post in posts %}
-    
-            <h3><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h3>
-            
-            <p>{{ post.body | slice:":300" }}...</p>
-        {% endfor %}
-    {% endblock posts %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-8">
+              {% block content %}
+                {% block posts %}
+                  {% for post in posts %}
+                    <h3><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h3>
+                    <p>{{ post.body | slice:":300" }}...</p>
+                  {% endfor %}
+                {% endblock posts %}
+            </div>
+            <div class="col-md-4">
+                {% if user.is_authenticated %}
+                  <h2>Create Post</h2>
+                  <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Create Post</button>
+                  </form>
+                {% else %}
+                  <p>Please log in to create a post.</p>
+                {% endif %}
+            </div>
+
 {% endblock %}
+
 </main>
 <script src="https://kit.fontawesome.com/3c09670cc8.js" crossorigin="anonymous"></script>
 

@@ -7,14 +7,13 @@ User = get_user_model() #Get current user
 STATUS = ((0, "Draft"), (1, "Published"))
 
 class Profile(models.Model):
-    title = models.CharField(max_length=200, unique=True, default="")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     profile_picture = CloudinaryField('profile_pictures', default='placeholder', blank=True)
     location = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.user
     
     
 

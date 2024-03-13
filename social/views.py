@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Profile, Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +11,21 @@ def home(request):
     context = {
         "posts": posts,
     }
+    return render(request, 'social/home.html', context)
+
+@login_required
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)  # Don't save just yet
+            post.author = request.user  # Assign current user as author
+            post.save()
+            return redirect('home')  # Redirect to your desired page
+    else:
+        form = PostForm()
+
+    context = {'form': form}
     return render(request, 'social/home.html', context)
 
 @login_required(login_url="login")
