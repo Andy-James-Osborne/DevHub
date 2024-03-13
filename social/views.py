@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
-from .forms import CommentForm, PostForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import CommentForm, PostForm, UpdateProfileForm, UpdateUserForm
+from django.contrib import messages
 from .models import Profile, Post, Comment
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -15,8 +16,25 @@ def home(request):
     }
     return render(request, 'social/home.html', context)
 
-def user_profile(request):
-    return render(request, 'social/profile.html')
+# @login_required
+# def user_profile(request):
+#     if request.method == 'POST':
+#         user_form = UpdateUserForm(request.POST, instance=request.user)
+#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+    #     if user_form.is_valid() and profile_form.is_vaild():
+    #         user_form.save()
+    #         profile_form.save()
+    #         messages.success(request, 'Your profile is updated successfully')
+    #         return redirect('profile')
+    # else:
+    #     pass
+    # context = {
+    #     'user_form': user_form,
+    #     'profile_form': profile_form,
+    # }
+
+    # return render(request, 'social/profile.html', context)
 
 @login_required
 def create_post(request):
