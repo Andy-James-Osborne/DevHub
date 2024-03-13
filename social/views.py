@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ValidationError
 
 def home(request):
     posts = Post.objects.all().order_by("created_on")
@@ -16,7 +17,7 @@ def home(request):
 @login_required
 def create_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)  # Don't save just yet
             post.author = request.user  # Assign current user as author
