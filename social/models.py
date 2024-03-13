@@ -8,7 +8,7 @@ User = get_user_model() #Get current user
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    profile_picture = CloudinaryField('profile_pictures', default='placeholder')
+    profile_picture = models.ImageField(default='5907.jpeg', upload_to='profile_image')
     location = models.CharField(max_length=100, blank=True)
 
     def __str__(self):

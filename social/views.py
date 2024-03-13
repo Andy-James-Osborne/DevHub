@@ -15,6 +15,9 @@ def home(request):
     }
     return render(request, 'social/home.html', context)
 
+def user_profile(request):
+    return render(request, 'social/profile.html')
+
 @login_required
 def create_post(request):
     if request.method == 'POST':
