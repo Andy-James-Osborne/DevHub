@@ -66,18 +66,28 @@
             </div>
         </nav>
     </header>
+    {% block content %}
     <main class="container">
         <div class="row">
             <div class="col-md-8">
-            {% block content %}
                 {% block posts %}
                   {% for post in posts %}
-                    <h3><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h3>
+                    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+                    <h5><strong>Username:</strong> {{post.author}} <strong>wrote</strong></h5>
                     <p>{{ post.body | slice:":300" }}...</p>
                   {% endfor %}
                 {% endblock posts %}
             </div>
-            {% endblock %}
+            <div class="col-md-4">
+                {% if user.is_authenticated %}
+                  <h2>Create Post</h2>
+                    <button class="btn btn-primary"><a href="{% url 'create_post' %}">Create Post</a></button>
+                  </form>
+                {% else %}
+                  <h3>Please log in to create a post.</h3>
+                  <button class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
+                {% endif %}
+    {% endblock %}
 
 </main>
 <script src="https://kit.fontawesome.com/3c09670cc8.js" crossorigin="anonymous"></script>

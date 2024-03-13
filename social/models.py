@@ -19,6 +19,7 @@ class Profile(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='post_images/', blank=True)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     STATUS = ((0, "Draft"), (1, "Published"))

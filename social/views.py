@@ -26,7 +26,7 @@ def create_post(request):
         form = PostForm()
 
     context = {'form': form}
-    return render(request, 'social/home.html', context)
+    return render(request, 'social/create_post.html', context)
 
 @login_required(login_url="login")
 def post_detail(request, pk):
