@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Profile, Post, Comment
 from .forms import CommentForm, PostForm
+from .models import Profile, Post, Comment
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout

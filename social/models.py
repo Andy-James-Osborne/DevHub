@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model() #Get current user
 
-STATUS = ((0, "Draft"), (1, "Published"))
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,9 +18,10 @@ class Profile(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    STATUS = ((0, "Draft"), (1, "Published"))
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
 
