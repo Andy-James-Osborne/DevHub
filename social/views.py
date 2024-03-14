@@ -22,19 +22,19 @@ def home(request):
 #         user_form = UpdateUserForm(request.POST, instance=request.user)
 #         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
-    #     if user_form.is_valid() and profile_form.is_vaild():
-    #         user_form.save()
-    #         profile_form.save()
-    #         messages.success(request, 'Your profile is updated successfully')
-    #         return redirect('profile')
-    # else:
-    #     pass
-    # context = {
-    #     'user_form': user_form,
-    #     'profile_form': profile_form,
-    # }
+#         if user_form.is_valid() and profile_form.is_vaild():
+#             user_form.save()
+#             profile_form.save()
+#             messages.success(request, 'Your profile is updated successfully')
+#             return redirect('profile')
+#     else:
+#         pass
+#     context = {
+#         'user_form': user_form,
+#         'profile_form': profile_form,
+#     }
 
-    # return render(request, 'social/profile.html', context)
+#     return render(request, 'social/profile.html', context)
 
 @login_required
 def create_post(request):
@@ -55,9 +55,6 @@ def create_post(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     form = CommentForm()  # Form for comments
-    edit_form = None  # Initialize edit form
-    delete_confirmed = False  # Track deletion confirmation
-
 
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -68,35 +65,50 @@ def post_detail(request, pk):
             comment.save()
             return redirect('post_detail', pk=post.pk)
 
-    # Check if the request is for editing the post
-        if 'edit_post' in request.POST:
-            edit_form = PostForm(request.POST, instance=post)
-            if edit_form.is_valid():
-                edit_form.save()
-                return redirect('post_detail', pk=post.pk)
-
-        # Check if the request is for deleting the post
-        if 'delete_post' in request.POST:
-            if request.user.is_authenticated and (post.author == request.user or request.user.has_perm('yourapp.change_post')):  # Optional permission check
-                post.delete()
-                return redirect('post_list')  # Redirect to your post list URL
-            else:
-                # Handle unauthorized deletion attempt (optional: message or redirect)
-                pass
-
-
-
     comments = Comment.objects.filter(post=post).order_by('-created_on')
     context = {
         "post": post,
         "comments": comments,
         "form": form,
-        "edit_form": edit_form,
-        "delete_confirmed": delete_confirmed,
     }
 
     return render(request, "social/post_detail.html", context)
 
+@login_required(login_url="login")
+def edit_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    # Check if the user is authorized to edit this post (optional)
+    if post.author != request.user:
+        return redirect('home', pk=pk)  # Redirect to post detail if not authorized
+
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)  # Update existing post
+        if form.is_valid():
+            form.save()
+            return redirect('post_detail', pk=post.pk)  # Redirect to updated post detail
+    else:
+        form = PostForm(instance=post)  # Pre-fill form with existing post data
+
+    context = {
+        "post": post,
+        "form": form,
+    }
+
+    return render(request, "social/edit_post.html", context)
+
+@login_required(login_url="login")
+def delete_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        post.delete()
+        return redirect('home')  # Redirect to homepage or a success page after deletion
+    else:
+        context = {
+            "post": post,
+        }
+
+    return render(request, "social/delete_post.html", context)
     
 
 def signup(request):

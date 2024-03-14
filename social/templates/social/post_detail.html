@@ -7,6 +7,12 @@
     <p>{{ post.body | linebreaks }}</p>
     <p>{{ post.created_on }}</p>
     <hr>
+    {% if request.user.is_authenticated and post.author == request.user %}
+        <div>
+            <button class="btn btn-primary"><a href="{% url 'edit_post' post.pk %}">Edit</a></button>
+            <span>  <button class="btn btn-warning"><a href="{% url 'delete_post' post.pk %}">Delete</a></button></span>
+        </div>
+    {% endif %}
 
 
     <h3>Leave a comment:</h3>
