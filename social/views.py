@@ -18,7 +18,10 @@ def home(request):
 
 def profile(request):
     profile = Profile.objects.all()
-    return render(request, 'social/profile.html')
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'social/profile.html', context)
 
 @login_required
 def create_post(request):
