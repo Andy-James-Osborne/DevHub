@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, ProfileForm
 from django.contrib import messages
 from .models import Profile, Post, Comment
 from django.http import HttpResponseRedirect
@@ -8,7 +8,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth.models import User
 
 def home(request):
     posts = Post.objects.all().order_by("created_on")
@@ -17,7 +16,9 @@ def home(request):
     }
     return render(request, 'social/home.html', context)
 
-
+def profile(request):
+    profile = Profile.objects.all()
+    return render(request, 'social/profile.html')
 
 @login_required
 def create_post(request):
@@ -161,4 +162,4 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('login')
+    return render(request, 'social/logout.html')

@@ -1,5 +1,10 @@
 {% extends 'social/home.html' %}
 
 {% block content %}
-    
+{% for post in posts reversed %}
+    <h2><a href="{% url 'profile' profile.pk %}">{{ profile.username }}</a></h2>
+    <h5><strong>Username:</strong> {{post.user}} <strong>wrote</strong></h5>
+    <p>{{ post.bio }}...</p>
+    <hr>
+{% endfor %}
 {% endblock %}
