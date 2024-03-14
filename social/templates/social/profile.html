@@ -1,56 +1,5 @@
 {% extends 'social/home.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <img class="rounded-circle account-img" src="{{user.profile.profile_picture.url}}" alt="Profile Picture">
-        </div>
-        {% if user_form.errors %}
-            <div>
-                <div class="row">
-                    {% for key, value in user_form.errors.items %}
-                        {{value}}
-                    {% endfor %}
-                </div>
-                <button type="button" class="close"></button>
-            </div>
-        {% endif %}
-
-        <div class="form-edit">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            {{ user_form.username }}
-                        </div>
-                        <div class="form-group">
-                            <a href="#">Change Password</a>
-                            <hr>
-                            {{ profile_form.profile_picture }}
-                        </div>
-                        <p>Bio: {{ profile_form.bio }}</p> 
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button type="submit" class="btn btn-warning">Reset</button>
-            </form>
-        </div>
-
-
-
-
-
-            <div class="col">
-                <div>
-                    <h1>Hub: {{user.username}}'s profile</h1>
-                <hr>
-                </div>
-                    <p>{{bio.pro}}</p>
-                <div>
-
-                </div>    
-            </div>
-    </div>
-
+    
 {% endblock %}

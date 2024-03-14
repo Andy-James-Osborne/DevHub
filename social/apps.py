@@ -7,4 +7,4 @@ class SocialConfig(AppConfig):
 
 
 def ready(self):
-    import users.signals
+    from . import signals

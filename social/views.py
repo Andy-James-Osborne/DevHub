@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import CommentForm, PostForm, UpdateProfileForm, UpdateUserForm
+from .forms import CommentForm, PostForm
 from django.contrib import messages
 from .models import Profile, Post, Comment
 from django.http import HttpResponseRedirect
@@ -17,25 +17,7 @@ def home(request):
     }
     return render(request, 'social/home.html', context)
 
-# @login_required
-# def user_profile(request):
-#     if request.method == 'POST':
-#         user_form = UpdateUserForm(request.POST, instance=request.user)
-#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
-#         if user_form.is_valid() and profile_form.is_vaild():
-#             user_form.save()
-#             profile_form.save()
-#             messages.success(request, 'Your profile is updated successfully')
-#             return redirect('profile')
-#     else:
-#         pass
-#     context = {
-#         'user_form': user_form,
-#         'profile_form': profile_form,
-#     }
-
-#     return render(request, 'social/profile.html', context)
 
 @login_required
 def create_post(request):
@@ -113,14 +95,14 @@ def delete_post(request, pk):
 
 @login_required(login_url="login")
 def edit_comment(request, pk):
-    post = get_object_or_404(Comment, pk=pk)
+    comment = get_object_or_404(Comment, pk=pk)
 
     # Check if the user is authorized to edit this post (optional)
     if comment.author != request.user:
-        return redirect('home', pk=comment.post.pk)
+        return redirect('post_detail', pk=comment.post.pk)
 
     if request.method == "POST":
-        form = CommentForm(request.POST, instance=post)
+        form = CommentForm(request.POST, instance=comment)
         if form.is_valid():
             form.save()
             return redirect('post_detail', pk=comment.post.pk)  # Redirect to updated post detail
@@ -137,13 +119,16 @@ def edit_comment(request, pk):
 @login_required(login_url="login")
 def delete_comment(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
+    post = comment.post
 
     if request.method == "POST":
         comment.delete()
-        return redirect('post_detail', pk=comment.post.pk)
-    else:
-        context = {
-            "comment": comment,
+        return redirect('post_detail', pk=post.pk)
+    
+    context = {
+        "comment": comment,
+        "post": post
+            
         }
 
     return render(request, "social/delete_comment.html", context)
