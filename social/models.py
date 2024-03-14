@@ -8,7 +8,7 @@ User = get_user_model() #Get current user
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    profile_picture = models.ImageField(default='5907.jpeg', upload_to='profile_image')
+    profile_picture = CloudinaryField('pro_pic', default='placeholder')
     location = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
@@ -18,7 +18,7 @@ class Profile(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = CloudinaryField('post_pictures', default='placeholder')
+    image = CloudinaryField('post_pic', default='placeholder')
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
