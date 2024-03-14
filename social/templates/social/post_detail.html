@@ -4,7 +4,9 @@
     <h1>{{ post.title }}</h1>
     <h3>{{ post.author }} Posted:</h3>
     <hr>
-    <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
+    
+        <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title }}">
+    
     <p>{{ post.body | linebreaks }}</p>
     <p>{{ post.created_on }}</p>
     {% if request.user.is_authenticated and post.author == request.user %}

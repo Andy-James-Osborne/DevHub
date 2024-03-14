@@ -78,7 +78,11 @@
                   {% for post in posts reversed %}
                     <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
                     <h5><strong>Username:</strong> {{post.author}} <strong>wrote</strong></h5>
-                    <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
+                    
+                        <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
+                    
+
+                    
                     <p>{{ post.body | slice:":300" }}...</p>
                     <hr>
                   {% endfor %}
