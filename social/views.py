@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.models import User
 
 def home(request):
     posts = Post.objects.all().order_by("created_on")
@@ -109,6 +110,43 @@ def delete_post(request, pk):
         }
 
     return render(request, "social/delete_post.html", context)
+
+@login_required(login_url="login")
+def edit_comment(request, pk):
+    post = get_object_or_404(Comment, pk=pk)
+
+    # Check if the user is authorized to edit this post (optional)
+    if comment.author != request.user:
+        return redirect('home', pk=comment.post.pk)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('post_detail', pk=comment.post.pk)  # Redirect to updated post detail
+    else:
+        form = CommentForm(instance=comment)  # Pre-fill form with existing post data
+
+    context = {
+        "comment": comment,
+        "form": form,
+    }
+
+    return render(request, "social/edit_comment.html", context)
+
+@login_required(login_url="login")
+def delete_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+
+    if request.method == "POST":
+        comment.delete()
+        return redirect('post_detail', pk=comment.post.pk)
+    else:
+        context = {
+            "comment": comment,
+        }
+
+    return render(request, "social/delete_comment.html", context)
     
 
 def signup(request):
