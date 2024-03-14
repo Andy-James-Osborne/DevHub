@@ -29,21 +29,21 @@
     <hr>
     <h3>Comments:</h3>
     {% for comment in comments reversed %}
-        <p>
-         <b>{{ comment.author }}</b> wrote:
-        </p>
-        <p>
-            {{ comment.body | linebreaks }}
-        </p>
-        <p>
-            On {{ comment.created_on.date }}
-        </p>
-        {% if comment == comment.author %}
-            <div>
-                <button class="btn btn-primary"><a href="{% url 'edit_comment' comment.pk %}">Edit</a></button>
-                <span>  <button class="btn btn-warning"><a href="{% url 'delete_comment' comment.pk %}">Delete</a></button></span>
-            </div>
-        {% endif %}
+                <p>
+                 <b>{{ comment.author }}</b> wrote:
+                </p>
+                <p>
+                    {{ comment.body | linebreaks }}
+                </p>
+                <p>
+                    On {{ comment.created_on.date }}
+                </p>
+            {% if user.is_authenticated and comment.author == user %}
+                <div>
+                    <button class="btn btn-primary"><a href="{% url 'edit_comment' comment.pk %}">Edit</a></button>
+                    <span>  <button class="btn btn-warning"><a href="{% url 'delete_comment' comment.pk %}">Delete</a></button></span>
+                </div>
+            {% endif %}
         <hr>
     {% endfor %}
 {% endblock %}
