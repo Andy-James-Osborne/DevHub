@@ -99,22 +99,18 @@ def delete_post(request, pk):
 
 @login_required(login_url="login")
 def edit_comment(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-
-    # Check if the user is authorized to edit this post (optional)
-    if comment.author != request.user:
-        return redirect('post_detail', pk=comment.post.pk)
+    comments = get_object_or_404(Comment, pk=pk)
 
     if request.method == "POST":
-        form = CommentForm(request.POST, instance=comment)
+        form = CommentForm(request.POST, instance=comments)
         if form.is_valid():
             form.save()
-            return redirect('post_detail', pk=comment.post.pk)  # Redirect to updated post detail
+            return redirect('post_detail', pk=comments.post.pk)  # Redirect to updated post detail
     else:
-        form = CommentForm(instance=comment)  # Pre-fill form with existing post data
+        form = CommentForm(instance=comments)  # Pre-fill form with existing post data
 
     context = {
-        "comment": comment,
+        "comments": comments,
         "form": form,
     }
 
@@ -164,5 +160,8 @@ def login_user(request):
     return render(request, 'social/login.html', context)
 
 def logout_user(request):
-    logout(request)
-    return render(request, 'social/logout.html')
+    if request.method == 'POST':
+        logout(request)
+        return redirect('login')
+    else:
+        return render(request, 'social/logout.html')
