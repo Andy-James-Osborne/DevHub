@@ -150,7 +150,6 @@ def signup(request):
     else:
         form = UserCreationForm()
     context = {'form' : form}
-    messages.info(request, "Sign up unsuccessful try again!")
     return render(request, 'social/signup.html', context)
 
 def login_user(request):
