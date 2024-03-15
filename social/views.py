@@ -31,6 +31,7 @@ def create_post(request):
             post = form.save(commit=False)  # Don't save just yet
             post.author = request.user  # Assign current user as author
             post.save()
+            messages.success(request, "Post was created successfully.")
             return redirect('home')  # Redirect to your desired page
     else:
         form = PostForm()
@@ -50,6 +51,7 @@ def post_detail(request, pk):
             comment.post = post  
             comment.author = request.user
             comment.save()
+            messages.success(request, "Comment was successful.")
             return redirect('post_detail', pk=post.pk)
 
     comments = Comment.objects.filter(post=post).order_by('-created_on')
@@ -73,6 +75,7 @@ def edit_post(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post)  # Update existing post
         if form.is_valid():
             form.save()
+            messages.success(request, "Post was edited successfully.")
             return redirect('post_detail', pk=post.pk)  # Redirect to updated post detail
     else:
         form = PostForm(instance=post)  # Pre-fill form with existing post data
@@ -89,6 +92,7 @@ def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         post.delete()
+        messages.success(request, "Post was deleted successfully.")
         return redirect('home')  # Redirect to homepage or a success page after deletion
     else:
         context = {
@@ -105,6 +109,7 @@ def edit_comment(request, pk):
         form = CommentForm(request.POST, instance=comments)
         if form.is_valid():
             form.save()
+            messages.success(request, "Comment was edited successfully.")
             return redirect('post_detail', pk=comments.post.pk)  # Redirect to updated post detail
     else:
         form = CommentForm(instance=comments)  # Pre-fill form with existing post data
@@ -123,6 +128,7 @@ def delete_comment(request, pk):
 
     if request.method == "POST":
         comment.delete()
+        messages.success(request, "Comment was deleted successfully.")
         return redirect('post_detail', pk=post.pk)
     
     context = {
@@ -139,10 +145,12 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Sign up was successful.")
             return redirect('login')
     else:
         form = UserCreationForm()
     context = {'form' : form}
+    messages.info(request, "Sign up unsuccessful try again!")
     return render(request, 'social/signup.html', context)
 
 def login_user(request):
@@ -152,7 +160,11 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            messages.success(request, "Login was successful.")
             return redirect('home')
+        else:
+            messages.info(request, "Please enter a valid login!")
+            return redirect('login')
 
     else: 
         form = AuthenticationForm()
@@ -162,6 +174,7 @@ def login_user(request):
 def logout_user(request):
     if request.method == 'POST':
         logout(request)
+        messages.success(request, "Logout was successful.")
         return redirect('login')
     else:
         return render(request, 'social/logout.html')

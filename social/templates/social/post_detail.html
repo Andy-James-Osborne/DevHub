@@ -1,6 +1,13 @@
 {% extends 'social/home.html' %}
 
 {% block content %}
+    {% if messages %}
+    <div class="messages-success">
+        {% for message in messages %}
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
     <h1>{{ post.title }}</h1>
     <h3>{{ post.author }} Posted:</h3>
     <hr>
