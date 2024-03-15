@@ -1,10 +1,10 @@
 {% extends 'social/home.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-{% for pro in profile %}
-    <h2>{{ pro.user.username }}</h2>
-    <img class="card-img-top img-fit" height="300px" src=" {{ pro.profile_picture.url }}" alt="Profile Picture">
-    <p>{{ pro.bio }}</p>
+    <h2>{{ user.username }}</h2>
+    <img class="card-img-top img-fit" height="300px" src=" {{ user.profile.profile_picture.url }}" alt="Profile Picture">
     <hr>
-{% endfor %}
+    <button class="btn btn-primary"><a href="{% url 'edit_pro' %}">Edit</a></button>
 {% endblock %}
