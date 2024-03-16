@@ -1,13 +1,9 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
-User = get_user_model() #Get current user
-
-
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     profile_picture = CloudinaryField('pro_pic', default='placeholder', blank=True, null=True)
     interest = models.TextField(blank=True)

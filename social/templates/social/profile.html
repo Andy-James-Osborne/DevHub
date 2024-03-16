@@ -5,9 +5,9 @@
 {% block content %}
     <h2>{{ user.username }}</h2>
     <img src="{{ user.profile.profile_picture.url}}" alt="Profile Picture">
-    <p>{{ profile.bio }}</p>
-    <p></p>
-    <p></p>
+    <p>{{ user.profile.bio }}</p>
+    <p>{{ user.profile.interest }}</p>
+    <p>{{ user.profile.location }}</p>
 
     <form action="POST" enctype="multipart/form-data">
         {% csrf_token %}

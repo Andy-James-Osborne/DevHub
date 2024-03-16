@@ -19,13 +19,13 @@ def home(request):
 @login_required(login_url="login")
 def profile(request):
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'Updated')
             return redirect('profile')
     else:
-        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
     context = {
         'form': form
     }
