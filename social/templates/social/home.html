@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="ClubHub, designed by Django Dynamos, is a full-stack campus connect website that strives to provide high-quality information about campus events.  It encourages user registration and interaction by offering the opportunity to create, read, update, and delete comments on individual events. Options are also available to share the site through social media (Facebook, X, and Instagram)">
-    <meta name="keywords"
-        content="club hub, college events, event sharing, college life, campus activities, community engagement">
+        content=""
+        content="">
     <meta name="author" content="Django Dynamos">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -19,11 +19,11 @@
 
 <body>
 
-    <header>
+    <header class="bg-info">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="{% static 'images/Andy-pic.jpg' %}" class="d-inline-block align-top logo" alt="Logo" width="50" height="50">
+                    <img src="{% static 'images/logo.jpg' %}" class="d-inline-block align-top logo" alt="Logo" width="170" height="200">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -51,11 +51,10 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ user.username }}
                                     </a>
-                                    
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        
+
                                         <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-                                        
+
                                         <hr>
                                         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                                     </ul>
@@ -73,7 +72,7 @@
     {% block content %}
     <main class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 pr-5">
                 {% if messages %}
                     <div class="messages-success">
                         {% for message in messages %}
@@ -104,13 +103,18 @@
             </div>
             <div class="col-md-4">
                 {% if user.is_authenticated %}
-                  <h2>Create Post</h2>
-                    <button class="btn btn-primary"><a href="{% url 'create_post' %}">Create Post</a></button>
-                  
+                    <div>
+                        <h2>Create Post</h2>
+                        <button class="btn btn-primary"><a href="{% url 'create_post' %}">Create Post</a></button>
+                    </div>
+                    <hr>
+                    <button class="btn btn-primary"><a href="{% url 'profile_list' %}">Users</a></button>
                 {% else %}
                   <h3>Please log in to create a post.</h3>
                   <button class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
                 {% endif %}
+
+            </div>
     {% endblock %}
 
 </main>

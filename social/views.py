@@ -16,6 +16,10 @@ def home(request):
     }
     return render(request, 'social/home.html', context)
 
+def profile_list(request):
+    profiles = Profile.objects.exclude(user=request.user)
+    return render(request, 'social/profile_list.html', {"profiles": profiles})
+
 @login_required(login_url="login")
 def profile(request):
     if request.method == 'POST':

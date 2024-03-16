@@ -1,0 +1,12 @@
+{% extends 'social/home.html' %}
+
+{% block content %}
+    <h1>Follow Users</h1>
+    {% for profile in profiles %}
+        <div>
+            <img src="{{ user.profile.profile_picture.url }}" alt="">
+            <p>{{ profile.user.username }}</p>
+        </div>
+    {% endfor %}
+
+{% endblock %}
