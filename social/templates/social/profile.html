@@ -4,7 +4,14 @@
 
 {% block content %}
     <h2>{{ user.username }}</h2>
-    <img class="card-img-top img-fit" height="300px" src=" {{ user.profile.profile_picture.url }}" alt="Profile Picture">
-    <hr>
-    <button class="btn btn-primary"><a href="{% url 'edit_pro' %}">Edit</a></button>
+    <img src="{{ user.profile.profile_picture.url}}" alt="Profile Picture">
+    <p>{{ profile.bio }}</p>
+    <p></p>
+    <p></p>
+
+    <form action="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">Edit Profile</button>
+    </form>
 {% endblock %}

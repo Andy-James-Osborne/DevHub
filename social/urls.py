@@ -10,7 +10,6 @@ urlpatterns = [
     path("comment/<int:pk>/delete/", views.delete_comment, name="delete_comment"),
     path("create_post/", views.create_post, name="create_post"),
     path("profile/", views.profile, name="profile"),
-    path("edit_pro/", views.edit_profile, name="edit_pro"),
     path("signup/", views.signup, name="signup"),
     path("login/", views.login_user, name="login"),
     path("logout/", views.logout_user, name="logout"),

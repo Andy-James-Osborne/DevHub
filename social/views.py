@@ -16,29 +16,21 @@ def home(request):
     }
     return render(request, 'social/home.html', context)
 
-@login_required
+@login_required(login_url="login")
 def profile(request):
-    profile = Profile.objects.filter()
-    context = {
-        'profile': profile,
-    }
-    return render(request, 'social/profile.html', context)
-
-@login_required
-def edit_profile(request):
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = request.user
-            profile.save()
+            form.save()
+            messages.success(request, 'Updated')
             return redirect('profile')
-        else:
-            form = ProfileForm()
-        context = {
-            'form': form
-        }
-        return render(request, 'social/edit_profile.html', context)
+    else:
+        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+    context = {
+        'form': form
+    }
+  
+    return render(request, "social/profile.html", context)
 
 @login_required
 def create_post(request):
