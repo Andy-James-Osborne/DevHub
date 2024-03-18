@@ -52,6 +52,17 @@ def profile(request):
   
     return render(request, "social/profile.html", context)
 
+def follow_user(request, user_id):
+    user_to_follow = get_object_or_404(User, id=user_id)
+    if not request.user.following.filter(id=user_id).exists():
+        Follow.objects.create(follower=request.user, following=user_to_follow)
+    return redirect('profile_list')
+
+def unfollow_user(request, user_id):
+    user_to_unfollow = get_object_or_404(User, id=user_id)
+    request.user.following.filter(id=user_id).delete()
+    return redirect('profile_list')
+
 @login_required
 def create_post(request):
     if request.method == 'POST':
