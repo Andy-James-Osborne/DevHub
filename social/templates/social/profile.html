@@ -1,17 +1,33 @@
 {% extends 'social/home.html' %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
-
+{% block title %}Profile | DevHub{% endblock %}
 {% block content %}
-    <h2>{{ user.username }}</h2>
-    <img src="{{ user.profile.profile_picture.url}}" alt="Profile Picture">
-    <p>{{ user.profile.bio }}</p>
-    <p>{{ user.profile.interest }}</p>
-    <p>{{ user.profile.location }}</p>
-
-    <form action="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit">Edit Profile</button>
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div class="col">
+                    <img class="main-profile-pic" src="{{ user.profile.profile_picture.url}}" alt="Profile Picture">
+                </div>
+                <div>
+                    <h1>{{ user.username }}</h1>
+                </div>
+                <hr>
+                <h3>Bio:</h3>
+                <p>{{ user.profile.bio }}</p>
+                <h3>Hobbies/Interests</h3>
+                <p>{{ user.profile.interest }}</p>
+                <h3>Lives at:</h3>
+                <p>{{ user.profile.location }}</p>
+            </div>
+            <div class="col-4 mt-5">
+                <h2>Edit profile</h2>
+                <form action="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn-warning" type="submit">Edit Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

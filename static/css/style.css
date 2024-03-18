@@ -1,13 +1,81 @@
-/* h1 {
-    color: green;
-}
 
 a {
-    text-decoration: none;
+    color: #252525 !important;
+    text-decoration: none !important;
     border-radius: 50%;
-    background-color: #118cd3;
-} */
+    /* background-color: #118cd3; */
+}
+
+body {
+    display: block;
+    color: #252525 !important;
+}
+
+/* navbar */
+
+header {
+    background-color: #118cd3 !important;
+    padding-bottom: 0 !important;
+}
+
+.navbar {
+    padding: 2rem !important;
+    margin: 0 !important;
+}
 
 .navbar-brand {
     border: none;
+}
+
+/* profile page */
+
+.main-profile-pic {
+    width: 30rem;
+    height: 30rem;
+}
+
+.profile-pic {
+    width: 10rem;
+    height: 10rem;
+}
+
+/* home page */
+
+.a-tag {
+    text-decoration: none !important;
+}
+
+.side-info {
+   padding-left: 5rem !important;
+}
+
+.side-info-1 {
+    padding-top: 5rem;
+}
+
+.side-info-2 {
+    padding-top: 5rem;
+}
+
+/* profile list page */
+
+.profile-list-img {
+    width: 30rem !important;
+    height: 30rem !important;
+}
+
+/* logout page */
+
+.logout {
+    margin-left: 33%;
+}
+
+.btn-warning {
+    border-radius: 5px;
+}
+
+/* post delete page */
+
+.delete-post {
+    margin-left: 33%;
 }

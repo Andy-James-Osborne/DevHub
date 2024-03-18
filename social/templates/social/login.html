@@ -1,25 +1,33 @@
 {% extends 'social/home.html' %}
 
-{% block title %}Login | ClubHub{% endblock %}
+{% block title %}Login | DevHub{% endblock %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 {% if messages %}
-    <div class="messages-success">
-        {% for message in messages %}
-        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-        {% endfor %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mt-5">
+                {% for message in messages %}
+                <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endif %}
-    <div class="container mt-5">
-        <h2>Login</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
     </div>
     
 {% endblock %}

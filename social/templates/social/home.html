@@ -8,7 +8,7 @@
         content=""
         content="">
     <meta name="author" content="Django Dynamos">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Home | DevHub{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% load bootstrap5 %}
@@ -19,11 +19,11 @@
 
 <body>
 
-    <header class="bg-info">
+    <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="{% static 'images/logo.jpg' %}" class="d-inline-block align-top logo" alt="Logo" width="170" height="200">
+                    <img src="{% static 'images/logo.jpg' %}" class="d-inline-block align-top logo" alt="Logo" width="70" height="100">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -51,12 +51,12 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ user.username }}
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <ul class="dropdown-menu dropdown-menu-end bg-warning" aria-labelledby="navbarDropdown">
 
-                                        <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                        <li><a class="dropdown-item" style="color: #252525;" href="{% url 'profile' %}">Profile</a></li>
 
                                         <hr>
-                                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                                        <li><a class="dropdown-item" style="color: #252525;" href="{% url 'logout' %}">Logout</a></li>
                                     </ul>
                                 {% else %}
                                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,8 +71,10 @@
     </header>
     {% block content %}
     <main class="container">
-        <div class="row">
-            <div class="col-md-8 pr-5">
+        <h1>DevHub</h1>
+        <hr>
+        <div class="row mt-5">
+            <div class="col-md-8">
                 {% if messages %}
                     <div class="messages-success">
                         {% for message in messages %}
@@ -82,36 +84,38 @@
                 {% endif %}
                 {% block posts %}
                   {% for post in posts reversed %}
-                    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-                    <h5><strong>Username:</strong> {{post.author}} <strong>wrote</strong></h5>
-                    
-                        <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
-                    
-
-                    
+                    <h5><strong>Username:</strong> {{post.author}} <strong>wrote-</strong></h5>
+                    <h2><a class="a-tag" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+                    <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
                     <p>{{ post.body | slice:":300" }}...</p>
                     <hr>
                   {% endfor %}
-                    {% if request.user.is_authenticated and post.author == request.user %}
-                        <div>
-                            <button class="btn btn-primary"><a href="{% url 'edit_post' post.pk %}">Edit</a></button>
-                            <span>  <button class="btn btn-warning"><a href="{% url 'delete_post' post.pk %}">Delete</a></button></span>
-                        </div>
-                    {% endif %}
 
                 {% endblock posts %}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mt-5 side-info">
                 {% if user.is_authenticated %}
                     <div>
-                        <h2>Create Post</h2>
-                        <button class="btn btn-primary"><a href="{% url 'create_post' %}">Create Post</a></button>
+                        <h2>Create Post:</h2>
+                        <button class="btn btn-primary"><a class="a-tag" href="{% url 'create_post' %}">Create Post</a></button>
                     </div>
                     <hr>
-                    <button class="btn btn-primary"><a href="{% url 'profile_list' %}">Users</a></button>
+                    <div class="side-info-1">
+                        <h2>Other User Profile:</h2>
+                        <button class="btn btn-primary"><a class="a-tag" href="{% url 'profile_list' %}">Users</a></button>
+                    </div>
+                    <hr>
                 {% else %}
-                  <h3>Please log in to create a post.</h3>
-                  <button class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
+                    <div>
+                        <h3>Please log in to create a post.</h3>
+                        <button class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
+                        <hr>
+                    </div>
+                    <div class="side-info-2">
+                        <h3>Please log in to follow users.</h3>
+                        <button class="btn btn-primary side-info-2"><a href="{% url 'login' %}">Login</a></button>
+                        <hr>
+                    </div>
                 {% endif %}
 
             </div>
