@@ -21,20 +21,33 @@ def profile_list(request):
     return render(request, 'social/profile_list.html', {"profiles": profiles})
 
 @login_required(login_url="login")
-def profile(request):
+def profile(request, pk):
+    profile = get_object_or_404(Profile, pk=pk)
+
+    context = {
+        'profile': profile,
+    }
+
+    return render(request, "social/profile.html", context)
+
+@login_required
+def edit_profile(request, pk):
+    profile = get_object_or_404(Profile, pk=pk)
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Updated')
-            return redirect('profile')
+            messages.success(request, "Profile Updated!")
+            return redirect('profile')  # Redirect to profile page after update
     else:
-        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        form = ProfileForm(instance=profile)  # Pre-populate form
+
     context = {
-        'form': form
+        'form': form,
+        'profile': profile,
     }
-  
-    return render(request, "social/profile.html", context)
+    return render(request, 'social/edit_profile.html', context)
+
 
 @login_required
 def create_post(request):
