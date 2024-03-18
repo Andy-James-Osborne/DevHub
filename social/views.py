@@ -20,34 +20,37 @@ def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
     return render(request, 'social/profile_list.html', {"profiles": profiles})
 
+def profile_create(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)  # Don't save yet, associate with user
+            profile.user = request.user  # Associate profile with current user
+            profile.save()
+            messages.success(request, 'Profile Created!')
+            return redirect('profile')  # Redirect to profile page after creation
+    else:
+        form = ProfileForm()
+    context = {'form': form}
+    return render(request, "social/profile_create.html", context)
+
+
 @login_required(login_url="login")
-def profile(request, pk):
-    profile = get_object_or_404(Profile, pk=pk)
-
-    context = {
-        'profile': profile,
-    }
-
-    return render(request, "social/profile.html", context)
-
-@login_required
-def edit_profile(request, pk):
-    profile = get_object_or_404(Profile, pk=pk)
+def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            messages.success(request, "Profile Updated!")
-            return redirect('profile')  # Redirect to profile page after update
+            messages.success(request, 'Updated')
+            return redirect('profile')
     else:
-        form = ProfileForm(instance=profile)  # Pre-populate form
-
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
     context = {
         'form': form,
         'profile': profile,
     }
-    return render(request, 'social/edit_profile.html', context)
-
+  
+    return render(request, "social/profile.html", context)
 
 @login_required
 def create_post(request):

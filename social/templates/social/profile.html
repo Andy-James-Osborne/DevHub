@@ -20,12 +20,13 @@
                 <h3>Lives at:</h3>
                 <p>{{ user.profile.location }}</p>
             </div>
-            <div class="col-md-4 mt-5 side-info">
-                    <div class="side-info-1">
-                        <h2>Edit Profile:</h2>
-                        <button class="btn btn-primary"><a class="a-tag" href="{% url 'edit_profile' profile.pk %}">Users</a></button>
-                    </div>
-                    <hr>
+            <div class="col-4 mt-5">
+                <h2>Edit profile</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn-warning" type="submit">Edit Profile</button>
+                </form>
             </div>
         </div>
     </div>

@@ -16,6 +16,17 @@
                 <img class="card-img-top image-fluid" style="width: auto; height: 30rem;" src=" {{ post.image.url }}" alt="{{ post.title }}">
                 <p>{{ post.body | linebreaks }}</p>
                 <p>{{ post.created_on }}</p>
+                <h3>Leave a Like</h3>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% if like %}
+                        <button type="submit" name="">Like</button>
+                    {% else %}
+                        <button type="submit" name="">Like</button>
+                    {% endif %}
+
+                </form>
+
                 {% if request.user.is_authenticated and post.author == request.user %}
                     <div>
                         <button class="btn btn-primary"><a href="{% url 'edit_post' post.pk %}">Edit</a></button>
