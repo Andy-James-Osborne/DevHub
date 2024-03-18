@@ -4,14 +4,17 @@
     <div class="container">
         <div class="row">
             <h1>Follow other users</h1>
-            <div class="col-4 profile-list">
+            <div class="col-12 profile-list">
                 {% for profile in profiles %}
-                <div class="col-4 profile-list-img">
-                    <img src="{{ user.profile.profile_picture.url }}" alt="">
-                    <h3>{{ profile.user.username }}</h3>
-                    <hr>
-                {% endfor %}
+                <div class="col profile-list">
+                        <img src="{{ profile.profile_picture.url }}" alt="">
+                        <h3>{{ profile.user.username }}</h3>
+                        <p>{{ profile.bio }}</p>
+                        <p>{{ profile.interest }}</p>
+                        <p>{{ profile.location }}</p>
+                    <hr>  
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>

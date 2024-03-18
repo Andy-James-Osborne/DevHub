@@ -59,9 +59,9 @@ header {
 
 /* profile list page */
 
-.profile-list-img {
-    width: 30rem !important;
-    height: 30rem !important;
+.profile-list {
+    width: 15rem !important;
+    margin-top: 5rem;
 }
 
 /* logout page */
