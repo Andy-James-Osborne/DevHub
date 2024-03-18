@@ -70,25 +70,29 @@
         </nav>
     </header>
     {% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mt-5 messages-success">
+                {% for message in messages %}
+                <p {% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <main class="container">
         <h1>DevHub</h1>
         <hr>
         <div class="row mt-5">
             <div class="col-md-8">
-                {% if messages %}
-                    <div class="messages-success">
-                        {% for message in messages %}
-                        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-                        {% endfor %}
-                    </div>
-                {% endif %}
                 {% block posts %}
                   {% for post in posts reversed %}
+                <a class="a-tag" href="{% url 'post_detail' post.pk %}">
                     <h5><strong>Username:</strong> {{post.author}} <strong>wrote-</strong></h5>
-                    <h2><a class="a-tag" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+                    <h2>{{ post.title }}</h2>
                     <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
                     <p>{{ post.body | slice:":300" }}...</p>
                     <hr>
+                </a>
                   {% endfor %}
 
                 {% endblock posts %}

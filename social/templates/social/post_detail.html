@@ -1,19 +1,21 @@
 {% extends 'social/home.html' %}
 {% block title %}Post Detail | DevHub{% endblock %}
 {% block content %}
-    {% if messages %}
-    <div class="messages-success">
-        {% for message in messages %}
-        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-5 messages-success">
+            {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></p>
+            {% endfor %}
+        </div>
     </div>
+</div>
     <div class="container">
         <div class="row">
-            <div class="col-8 mt-3">
+            <div class="col-lg-8 mt-3">
                 <h1>{{ post.title }}</h1>
                 <h3>{{ post.author }} Posted:</h3>
-                <img class="card-img-top image-fluid" style="width: auto; height: 30rem;" src=" {{ post.image.url }}" alt="{{ post.title }}">
+                <img class="card-img-top img-fit post-pic" style="width: auto; height: 300px;" src=" {{ post.image.url }}" alt="{{ post.title }}">
                 <p>{{ post.body | linebreaks }}</p>
                 <p>{{ post.created_on }}</p>
                 <h3>Leave a Like</h3>
@@ -35,7 +37,7 @@
                     <hr>
                 {% endif %}
             </div>
-            <div class="col-4 mt-5">
+            <div class="col-lg-4 mt-5">
                 <h3>Leave a comment:</h3>
                 <form method="post">
                     {% csrf_token %}

@@ -3,13 +3,22 @@
 {% load crispy_forms_tags %}
 {% block title %}Profile | DevHub{% endblock %}
 {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-5 messages-success">
+            {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
     <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <div class="col">
+        <div class="row side">
+            <div class="col side">
+                <div class="col-lg-9 mt-5">
                     <img class="main-profile-pic" src="{{ user.profile.profile_picture.url}}" alt="Profile Picture">
                 </div>
-                <div>
+                <div class="mt-5">
                     <h1>{{ user.username }}</h1>
                 </div>
                 <hr>
@@ -20,7 +29,7 @@
                 <h3>Lives at:</h3>
                 <p>{{ user.profile.location }}</p>
             </div>
-            <div class="col-4 mt-5">
+            <div class="col-lg-3 mt-5">
                 <h2>Edit profile</h2>
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}

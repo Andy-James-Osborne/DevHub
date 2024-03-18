@@ -39,6 +39,10 @@ header {
     height: 10rem;
 }
 
+.messages-success {
+    background-color: #ffc107;
+}
+
 /* home page */
 
 .a-tag {
@@ -79,3 +83,18 @@ header {
 .delete-post {
     margin-left: 33%;
 }
+
+/* home page */
+@media screen and (max-width: 750px) {
+    .side-info {
+        padding-left: 0 !important;
+     }
+  }
+
+/* post */
+@media screen and (max-width: 559px) {
+    .post-pic {
+        width: 20rem;
+        height: 20rem;
+    }
+  }
