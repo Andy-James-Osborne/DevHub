@@ -15,8 +15,8 @@
     <div class="container">
         <div class="row side">
             <div class="col side">
-                <div class="col-lg-9 mt-5">
-                    <img class="main-profile-pic" src="{{ user.profile.profile_picture.url}}" alt="Profile Picture">
+                <div id="main-profile-pic" class="col-lg-9 mt-5">
+                    <img src="{{ user.profile.profile_picture.url}}" alt="Profile Picture">
                 </div>
                 <div class="mt-5">
                     <h1>{{ user.username }}</h1>

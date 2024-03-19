@@ -83,21 +83,23 @@
         <h1>DevHub</h1>
         <hr>
         <div class="row mt-5">
-            <div class="col-md-8">
+            <div class="col-8">
                 {% block posts %}
                   {% for post in posts reversed %}
                 <a class="a-tag" href="{% url 'post_detail' post.pk %}">
-                    <h5><strong>Username:</strong> {{post.author}} <strong>wrote-</strong></h5>
-                    <h2>{{ post.title }}</h2>
-                    <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
-                    <p>{{ post.body | slice:":300" }}...</p>
-                    <hr>
+                    <div class="mb-5 mt-5">
+                        <h5><strong>Username:</strong> {{post.author}} <strong>wrote-</strong></h5>
+                        <h2>{{ post.title }}</h2>
+                        <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
+                        <p>{{ post.body | slice:":300" }}...</p>
+                        <hr>
+                    </div>
                 </a>
                   {% endfor %}
 
                 {% endblock posts %}
             </div>
-            <div class="col-md-4 mt-5 side-info">
+            <div class="col-4 mt-5 side-info">
                 {% if user.is_authenticated %}
                     <div>
                         <h2>Create Post:</h2>
