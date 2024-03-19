@@ -16,6 +16,7 @@ def home(request):
     }
     return render(request, 'social/home.html', context)
 
+@login_required(login_url="login")
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
     return render(request, 'social/profile_list.html', {"profiles": profiles})
@@ -52,17 +53,6 @@ def profile(request):
   
     return render(request, "social/profile.html", context)
 
-def follow_user(request, user_id):
-    user_to_follow = get_object_or_404(User, id=user_id)
-    if not request.user.following.filter(id=user_id).exists():
-        Follow.objects.create(follower=request.user, following=user_to_follow)
-    return redirect('profile_list')
-
-def unfollow_user(request, user_id):
-    user_to_unfollow = get_object_or_404(User, id=user_id)
-    request.user.following.filter(id=user_id).delete()
-    return redirect('profile_list')
-
 @login_required
 def create_post(request):
     if request.method == 'POST':
@@ -83,6 +73,16 @@ def create_post(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     form = CommentForm()  # Form for comments
+    liked = False
+
+    if request.method == "POST":
+        if 'like' in request.POST:
+            if request.user.is_authenticated:
+                if post.likes.filter(id=request.user.id).exists():
+                    post.likes.remove(request.user)
+                else:
+                    post.likes.add(request.user)
+        return redirect('post_detail', pk=post.pk)
 
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -95,15 +95,17 @@ def post_detail(request, pk):
             return redirect('post_detail', pk=post.pk)
 
     comments = Comment.objects.filter(post=post).order_by('-created_on')
+    liked = request.user.is_authenticated and post.likes.filter(id=request.user.id).exists()
     context = {
         "post": post,
         "comments": comments,
         "form": form,
+        "liked": liked,
     }
 
     return render(request, "social/post_detail.html", context)
 
-@login_required(login_url="login")
+
 def edit_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
@@ -127,7 +129,7 @@ def edit_post(request, pk):
 
     return render(request, "social/edit_post.html", context)
 
-@login_required(login_url="login")
+
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -141,7 +143,7 @@ def delete_post(request, pk):
 
     return render(request, "social/delete_post.html", context)
 
-@login_required(login_url="login")
+
 def edit_comment(request, pk):
     comments = get_object_or_404(Comment, pk=pk)
 
@@ -161,7 +163,7 @@ def edit_comment(request, pk):
 
     return render(request, "social/edit_comment.html", context)
 
-@login_required(login_url="login")
+
 def delete_comment(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     post = comment.post

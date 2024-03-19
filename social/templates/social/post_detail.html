@@ -18,16 +18,19 @@
                 <img class="card-img-top img-fit post-pic" style="width: auto; height: 300px;" src=" {{ post.image.url }}" alt="{{ post.title }}">
                 <p>{{ post.body | linebreaks }}</p>
                 <p>{{ post.created_on }}</p>
-                <h3>Leave a Like</h3>
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    {% if like %}
-                        <button type="submit" name="">Like</button>
-                    {% else %}
-                        <button type="submit" name="">Like</button>
-                    {% endif %}
-
-                </form>
+                {% if request.user.is_authenticated %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button class="btn {% if liked %}btn-warning{% else %}btn-primary{% endif %}" name="like" type="submit">
+                            {% if liked %}
+                                Unlike
+                            {% else %}
+                                Like
+                            {% endif %}
+                        </button>
+                    </form>
+                {% endif %}
+                <p>Likes: {{ post.likes.count }}</p>
 
                 {% if request.user.is_authenticated and post.author == request.user %}
                     <div>
