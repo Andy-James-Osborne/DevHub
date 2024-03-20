@@ -297,6 +297,7 @@ age'
 + https://www.youtube.com/watch?v=RhJIMUMJ_Do&t=140s- Youtube walkthrough for static files.
 + https://www.youtube.com/watch?v=CQ90L5jfldw&t=38s- Youtube walkthrough for updating user profile.
 + https://dbdiagram.io/d- To design my database models.
++ https://www.pexels.com/photo/person-holding-an-orange-and-blue-python-sticker-11035474/
 
 ## Technologies used:
 
