@@ -67,7 +67,7 @@
             </div>
         </nav>
     </header>
-    {% block content %}
+{% block content %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 mt-5 messages-success">
@@ -88,7 +88,7 @@
                     <div class="mb-5 mt-5">
                         <h5><strong>Username:</strong> {{post.author}} <strong>wrote-</strong></h5>
                         <h2>{{ post.title }}</h2>
-                        <img class="card-img-top img-fit" height="300px" src=" {{ post.image.url }}" alt="{{ post.title}}">
+                        <img class="card-img-top img-fit" height="300" src=" {{ post.image.url }}" alt="{{ post.title}}">
                         <p>{{ post.body | slice:":300" }}...</p>
                         <hr>
                     </div>
@@ -123,9 +123,9 @@
                 {% endif %}
 
             </div>
-    {% endblock %}
-
-</main>
+        </div>
+    </main>
+{% endblock %}
 
 </body>
 

@@ -135,11 +135,18 @@ I had an issue with first check of lighthouse report with a preformance score (5
 After changing image sizes by compressing them I have been able to score (95)
 
 ## Validation:
+| My Code | Validations | Comments |
+|---|---|---|
+| Html | Good | Good |
+| Css | Good | |Good |
+| Python | Good | Good |
 
-HTML  
-<img src="assets/images/HTML validation.png" alt="Image HTML validation code" width="700" height="400">
+### HTML code validation: https://validator.w3.org/  
+<img src="" alt="Image HTML validation code" width="700" height="400">
 
-CSS  
-<img src="assets/images/CSS validation (1).png" alt="Image CSS validation code" width="700" height="400">
+### CSS code validation: 
+<img src="" alt="Image CSS validation code" width="700" height="400">
+
+### Python code validation: https://peps.python.org/pep-0008/  
 
 ## Features
