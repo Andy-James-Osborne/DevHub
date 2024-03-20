@@ -78,6 +78,10 @@ Any user story that wasn't completed in this sprint has been moved to the future
 
 ## Responsiveness
 
+<img src="static/images/Responsiveness-table.JPG" alt="" width="1200" height="500">
+
+Tested through a range of screen sizes to check for responsiveness, I have included screenshots as proof of responsiveness.
+
 Iphone XR  
 <img src="static/images/iphone-main.JPG" alt="" width="200" height="500">
 <img src="static/images/iphone-post-make.JPG" alt="" width="200" height="500">
@@ -110,7 +114,7 @@ Ipad Pro
 
 ## Browser Compatibility
 Tested my website in four different browser that I have access to.  
-I used the dev tools to check the verisuals for phone, tablets and laptops.
+I used the dev tools to check the visual for phones, tablets and Desktop.
 
 | Browser | Appearance | Responsiveness |
 |---|---|---|
@@ -124,8 +128,11 @@ I used the dev tools to check the verisuals for phone, tablets and laptops.
 All bugs are location in the README.md document
 
 ## Lighthouse Report
-<img src="" alt="Image HTML validation code" width="500" height="400">
-<img src="" alt="Image HTML validation code" width="500" height="400">
+<img src="static/images/Lighthouse-first-test.JPG" alt="" width="700" height="500">  
+I had an issue with first check of lighthouse report with a preformance score (54)
+
+<img src="static/images/lighthouse-final.JPG" alt="" width="700" height="500">  
+After changing image sizes by compressing them I have been able to score (95)
 
 ## Validation:
 
