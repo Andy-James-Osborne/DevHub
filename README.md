@@ -2,6 +2,19 @@
 
 # Project Overview:
 
+This is a Full-Stack project with the use of django for the framework. I had two weeks to design and create a site. The choosen project was a social media site with the idea to be able to connect user with each for social interaction. Due to the sort time for this project the are a few features that I would include in the next sprint of this project to get it the standard of a full functing site. However I have completed all MVP requirements within the timeframe and used KISS (keep it simple silly) with some features to ensure the site is was ready for deployment.
+
++ Key Features:
+   - Post feed for all users to see.
+   - Interactive post feed to show post details once clicked on
+   - All users can make their own post once they have logged in
+   - Are only able to view the post feed page if not created an account
+   - Sign in function allows users to have their own profile page which they can edit themseleves
+   - Able to view other user info once logged in in a profile list of other users
+   - Users have the ability to edit and delete their own post
+   - Users can comment on other users post
+   - Users can like other users post
+   - Image are able to be upload from their desktop to the image fields in the profile and post forms
 
 
 <img src="static/images/Social-media.JPG" alt="Image of homescreen" width="900" height="500">
@@ -38,13 +51,19 @@
 
 15. [Acknoledgements](#acknoledgements)
 
-## Key Features:
-
-+ 
-
 ## UX:
+### Design of site
+I have kept with simple colours with a white background to make the website stand out without being too bright.
+   - #252525
+   -  #118cd3
+   - #ffc107
 
-+ 
++ I have used Bootstraps Primary colours of "btn-primary and btn-warning" throught my website for easy of use not to over complicate the design and aim for a higher functioning website.
++ This was decided early on to able me to focus on the database and functionality of the website. 
++ I also used a cdn simply css to help with styling of the site.
++ I have decided on the Bootstrap font-family that comes as standard as i know this is well tested and will work on most devices and browsers.
++ Also used colour which was selected from the colour wheel.  
+<img src="static/images/color-select.JPG" alt="" width="200" height="100">
 
 ## Wireframes:
 Home page  
@@ -110,7 +129,7 @@ Profile list page
 
 + DM messages- As a user, I want to send private messages to other users.  
 
-+ Follower feed post- As a user, I want to see a feed of posts from the people I follow.  
++ Follower feed- As a user, I want to see a feed of posts from the people I follow.  
 
 + Following users- As a user, I want to follow other users to see their posts in my feed.  
 
@@ -121,8 +140,6 @@ Profile list page
 
 ## Kanban Board
 <img src="static/images/Kanban-board-for-DevHub.JPG" alt="Image kanban board gitHub" width="900" height="400">
-
-## Scope
 
 ## Testing:
 
@@ -182,13 +199,26 @@ Profile list page
 + https://www.youtube.com/watch?v=CQ90L5jfldw&t=38s- Youtube walkthrough for updating user profile.
 + https://dbdiagram.io/d- To design my database models.
 
-## Frameworks:
+## Technologies used:
+
++ Git - (git add, git commit -m "" and git push)
++ GitHub - Store code for public access
++ GitPod - online IDE
++ ElephantSQL - Database use to store the website models and user infomation
++ Heroku - To be able to deploy the site
++ Cloudinary - For user to upload their images with cloud store
++ Balsamiq - To design my wireframes
++ WhiteNoise, however had to use python manage.py collectstatic command to enable the css to show in heroku
+
+
+
+### Frameworks:
 
 + Bootsrap 5 - https://getbootstrap.com/
 + Simple css - https://simplecss.org/
 + Django - https://www.djangoproject.com/
 
-## Languages Used
+### Languages Used
 
 + HTML
 + CSS
@@ -196,15 +226,15 @@ Profile list page
 
 ## Future Features:
 
-+ DM messages-   
++ DM messages- To enable user to have a connect link to their own private chat room with another users  
 
-+ Follower feed post- 
++ Follower post feed- To only be able to see the users that you follow post feed
 
-+ Following users- 
++ Following users- The ability to follow users you are intrested in
 
-+ Unfollow users-
++ Unfollow users- The ability to unfollow any users that are no longer of interest.
 
-+ Search bar- 
++ Search bar- To search for a specific username. 
 
 ## Acknowledgements
 

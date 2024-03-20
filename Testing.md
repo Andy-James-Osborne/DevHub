@@ -2,7 +2,7 @@
 
 
 ## User Stories Tested:
-I have gone through each user story. I have provided screen shots of all the user stories that have been achieved in this project.
+I have gone through each user story and provided screen shots of all the user stories that have been achieved in this project.
 Any user story that wasn't completed in this sprint has been moved to the future feature ready for the next sprint.
 
 ### Epic User Management:
@@ -119,7 +119,7 @@ I used the dev tools to check the visual for phones, tablets and Desktop.
 | Browser | Appearance | Responsiveness |
 |---|---|---|
 | Opera | Good | Good |
-| Edge | Good | |Good |
+| Edge | Good | Good |
 | Chrome | Good | Good |
 | Firefox | Good | Good |
 
@@ -135,18 +135,32 @@ I had an issue with first check of lighthouse report with a preformance score (5
 After changing image sizes by compressing them I have been able to score (95)
 
 ## Validation:
-| My Code | Validations | Comments |
-|---|---|---|
-| Html | Good | Good |
-| Css | Good | |Good |
-| Python | Good | Good |
 
 ### HTML code validation: https://validator.w3.org/  
-<img src="" alt="Image HTML validation code" width="700" height="400">
++ All pages had an error with (hr) tag inside the dropdown of the nav.
++ There is an (a) tag nested in a button the code validation didn't like this but was the only way I could get the python url to link with a button tag.
++ On create post page there is a issue with a (div) tag. This is because of the django format for the form.
++ Post detail page has empty (p) tags this is because of the comment edit and delete buttons that I have a bug with. Please check the bugs section in the readme.md file for more information about the edit and delete function for comments.
+### home.html page
+<img src="static/images/home.html-validation.JPG" alt="Image HTML validation code" width="900" height="400">
 
-### CSS code validation: 
-<img src="" alt="Image CSS validation code" width="700" height="400">
+### create_post.html page
+<img src="static/images/create-post-validation.JPG" alt="Image HTML validation code" width="900" height="400">
+
+### logout.html page
+<img src="static/images/Logout-validation.JPG" alt="Image HTML validation code" width="900" height="400">
+
+### post_detail.html page
+<img src="static/images/post-detail-valiadtion.JPG" alt="Image HTML validation code" width="900" height="400">
+
+### delete_post.html page
+<img src="static/images/delete-post-validation.JPG" alt="Image HTML validation code" width="900" height="400">
+
+### CSS code validation: https://jigsaw.w3.org/css-validator/validator  
+<img src="static/images/css-validation.JPG" alt="Image CSS validation code" width="900" height="200">
 
 ### Python code validation: https://peps.python.org/pep-0008/  
++ After viewing the documentation I forgotten to add doc-strings to my functions and models.
+   - I have adding in these strings to follow pep8 standards.
 
 ## Features
