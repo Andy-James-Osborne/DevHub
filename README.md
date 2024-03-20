@@ -173,6 +173,8 @@ Profile list page
    - Solution: Added text-decoration back to these tags to show user they are clickable.
 + Edit profile: Need information that is already on profile to render in form when edit at the moment the fields are blank when you edit the profile form.
    - Solution: Needed to add this in the if statement of my edit profile views.py function 'form = ProfileForm(instance=request.user.profile)'.
++ Comment on posts: Stop working when added like if statement to post_detail function in my views.py file.
+   - Solution: Had to rearrange the if statements in the function as the likes if statement was in wrong position.
 ### Responsive Testing:
 + Lougout: When testing the responsiveness the logout image is slightly off middle of page.
    - Solution: Add a media queiry so when on moblie view the logout is position center.

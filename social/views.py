@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.contrib.admin.views.decorators import staff_member_required
 
+
 def home(request):
     posts = Post.objects.all().order_by("created_on")
     context = {
@@ -16,20 +17,25 @@ def home(request):
     }
     return render(request, 'social/home.html', context)
 
+
 @login_required(login_url="login")
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
     return render(request, 'social/profile_list.html', {"profiles": profiles})
 
+
 def profile_create(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            profile = form.save(commit=False)  # Don't save yet, associate with user
-            profile.user = request.user  # Associate profile with current user
+            profile = form.save(commit=False)
+            # Don't save yet, associate with user
+            profile.user = request.user
+            # Associate profile with current user
             profile.save()
             messages.success(request, 'Profile Created!')
-            return redirect('profile')  # Redirect to profile page after creation
+            return redirect('profile')
+            # Redirect to profile page after creation
     else:
         form = ProfileForm()
     context = {'form': form}
@@ -50,8 +56,8 @@ def profile(request):
         'form': form,
         'profile': profile,
     }
-  
     return render(request, "social/profile.html", context)
+
 
 @login_required
 def create_post(request):
@@ -69,6 +75,7 @@ def create_post(request):
     context = {'form': form}
     return render(request, 'social/create_post.html', context)
 
+
 @login_required(login_url="login")
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -78,13 +85,13 @@ def post_detail(request, pk):
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False) 
-            comment.post = post  
+            comment = form.save(commit=False)
+            comment.post = post
             comment.author = request.user
             comment.save()
             messages.success(request, "Comment was successful.")
             return redirect('post_detail', pk=post.pk)
-    
+
     if request.method == "POST":
         if 'like' in request.POST:
             if request.user.is_authenticated:
@@ -172,15 +179,15 @@ def delete_comment(request, pk):
         comment.delete()
         messages.success(request, "Comment was deleted successfully.")
         return redirect('post_detail', pk=post.pk)
-    
+
     context = {
         "comment": comment,
         "post": post
-            
+
         }
 
     return render(request, "social/delete_comment.html", context)
-    
+
 
 def signup(request):
     if request.method == 'POST':
@@ -191,8 +198,9 @@ def signup(request):
             return redirect('login')
     else:
         form = UserCreationForm()
-    context = {'form' : form}
+    context = {'form': form}
     return render(request, 'social/signup.html', context)
+
 
 def login_user(request):
     if request.method == 'POST':
@@ -207,10 +215,11 @@ def login_user(request):
             messages.info(request, "Please enter a valid login!")
             return redirect('login')
 
-    else: 
+    else:
         form = AuthenticationForm()
     context = {'form': form}
     return render(request, 'social/login.html', context)
+
 
 def logout_user(request):
     if request.method == 'POST':

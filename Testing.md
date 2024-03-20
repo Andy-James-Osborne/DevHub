@@ -1,6 +1,5 @@
 # Manual Testing
 
-
 ## User Stories Tested:
 I have gone through each user story and provided screen shots of all the user stories that have been achieved in this project.
 Any user story that wasn't completed in this sprint has been moved to the future feature ready for the next sprint.
@@ -159,9 +158,21 @@ After changing image sizes by compressing them I have been able to score (95)
 ### CSS code validation: https://jigsaw.w3.org/css-validator/validator  
 <img src="static/images/css-validation.JPG" alt="Image CSS validation code" width="900" height="200">
 
-### Python code validation: https://peps.python.org/pep-0008/  
-+ After viewing the documentation I forgotten to add doc-strings to my functions and models.
-   - I have adding in these strings to follow pep8 standards.
+### Python code validation: https://peps.python.org/pep-0008/
+
+I used the python test tool pep8 from code institute https://pep8ci.herokuapp.com/
+I went the every file with .py
+
+After viewing and editing my code only three files haven't pass on everything.
+This is because when I indented the code when it was over 79 characters it came up with blank line error instead so i decided to stay with the none indented code as i believe it looked better and easier to read.
+The files with the code is > 79:
++ settings.py
++ models.py
++ views.py
++ env.py
 
 ## Features
 
+Went through the site from my heroku deployed site to test all the features.
+See table below for all tests.  
+<img src="static/images/Manual-test-form.JPG" alt="" width="700" height="900">
