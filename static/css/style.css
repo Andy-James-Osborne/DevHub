@@ -1,14 +1,11 @@
 
 a {
-    color: #252525 !important;
-    text-decoration: none !important;
-    border-radius: 50%;
-    /* background-color: #118cd3; */
+    background-color: #118cd3;
 }
 
 body {
     display: block;
-    color: #252525 !important;
+    color: #252525;
 }
 
 /* navbar */
