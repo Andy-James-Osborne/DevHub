@@ -73,101 +73,48 @@ Profile list page
 
 ### Epic User Management:
 + Sign Up- As a user, I want to sign up for an account using my username and a password.  
-<img src="static/images/Signup-page-user-story.JPG" alt="" width="1000" height="500">
 
 + Login- As a user, I want to log in to my existing account.  
-<img src="static/images/Login-user-story.JPG" alt="" width="1000" height="500">
 
 + Logout user- As a user, I want to logout with a are you sure request before logging out.  
-<img src="static/images/Logout-user-story.JPG" alt="" width="1000" height="500">
 
 + Notifactions- As a user, I want to receive notifications for confirmation of e.g login/out.  
-<img src="static/images/Logout-notifaction.JPG" alt="" width="1000" height="100">
-<img src="static/images/Post-edit-notifcation.JPG" alt="" width="1000" height="100">
-<img src="static/images/Post-notifcation.JPG" alt="" width="1000" height="100">
-<img src="static/images/Profile-update.JPG" alt="" width="1000" height="100">
-<img src="static/images/Login-notifcation.JPG" alt="" width="1000" height="100">
 
 + View my profile- As a user, I want to view my profile and see my posts, followers, and following.  
-<img src="static/images/Profile-userstory.JPG" alt="" width="1000" height="500">
 
 + Edit my profile- As a user, I want to edit my profile information.  
-<img src="static/images/editprofileuserstory.JPG" alt="" width="300" height="500">
 
 + Account shown in nav- As a user, I want to be able to be notified I am in my account by seeing the username in the navbar.  
-<img src="static/images/nav-account-user-story.JPG" alt="" width="1000" height="100">
-<img src="static/images/nav-user-user-story.JPG" alt="" width="1000" height="100">
 
 ### Epic Conent Management:
 + Responsive website- As a user, I want to use the site for all devices.  
-Iphone XR  
-<img src="static/images/iphone-main.JPG" alt="" width="200" height="500">
-<img src="static/images/iphone-post-make.JPG" alt="" width="200" height="500">
-<img src="static/images/iphone-post.JPG" alt="" width="200" height="500">
-<img src="static/images/iphone-profile.JPG" alt="" width="200" height="500">  
-<img src="static/images/iphone-signup.JPG" alt="" width="200" height="500">
-<img src="static/images/Ipone-login.JPG" alt="" width="200" height="500">
-<img src="static/images/iphone-follow.JPG" alt="" width="200" height="500">
-<img src="static/images/iphone-logout.JPG" alt="" width="200" height="500">  
-Ipad Pro  
-<img src="static/images/ipad-login.JPG" alt="" width="400" height="500">
-<img src="static/images/ipad-signup.JPG" alt="" width="400" height="500">
-<img src="static/images/ipad-main.JPG" alt="" width="400" height="500">
-<img src="static/images/ipad-post.JPG" alt="" width="400" height="500">
-<img src="static/images/ipad-post-make.JPG" alt="" width="400" height="500">
-<img src="static/images/ipad-logout.JPG" alt="" width="400" height="500">
-<img src="static/images/ipad-profile.JPG" alt="" width="400" height="500">
-<img src="static/images/ipad-profile-list.JPG" alt="" width="400" height="500">  
-4K 2560px screen    
-<img src="static/images/pc-main.JPG" alt="" width="1200" height="500">
-<img src="static/images/pc-login.JPG" alt="" width="1200" height="500">
-<img src="static/images/pc-signup.JPG" alt="" width="1200" height="500">
-<img src="static/images/pc-logout.JPG" alt="" width="1200" height="500">
-<img src="static/images/pc-make-post.JPG" alt="" width="1200" height="500">
-<img src="static/images/pc-post.JPG" alt="" width="1200" height="500">
-<img src="static/images/pc-profile-list.JPG" alt="" width="1200" height="500">
-<img src="static/images/pc-profile.JPG" alt="" width="1200" height="500">
-
 
 + Admin CRUD- As an owner, I want to access the admin of the site to be able to Create/Read/Update/Delete all of the data add to my site.  
-<img src="static/images/admin.JPG" alt="" width="1000" height="500">
 
 + Delete posts- As a user, I want to delete my posts if I no longer want to share it.  
-<img src="static/images/delete-post-user-story.JPG" alt="" width="1000" height="500">
 
 + Edit posts- As a user, I want to edit my posts if a mistake was made.  
-<img src="static/images/edit-post-user-story.JPG" alt="" width="1000" height="500">
 
 + Create a profile- As a user, I want a profile with a username, bio, and profile picture.  
-   - Profile is automatic made when you sign up.
 
 + Search bar- As a user, I want to search for other users by username.  
-   - This function has been added to future features and didnt make it into the sprint and remained in the backlog
 
 ### Epic Social Interaction:
 + Comment on post- As a user, I want to comment on posts to share my thoughts or ask questions.  
-<img src="static/images/be-comment-on-user-story.JPG" alt="" width="700" height="500">
 
 + Like posts- As a user, I want to like posts from other users.  
-<img src="static/images/like-user-story.JPG" alt="" width="700" height="500">
 
 + Create Posts- As a user, I want to create posts that can include text and images.  
-<img src="static/images/make-post-user-story.JPG" alt="" width="700" height="500">
 
 + View other user profile- As a user, I want to view profiles of other users and see their posts.  
-<img src="static/images/other-user-profile-user-story.JPG" alt="" width="700" height="500">
 
 + DM messages- As a user, I want to send private messages to other users.  
-   - This remained in the out of the site and was a won't have. It has been added to the future features.
 
 + Follower feed post- As a user, I want to see a feed of posts from the people I follow.  
-   - Didn't have time to sort this user story as stuck to MVP, in future features.
 
 + Following users- As a user, I want to follow other users to see their posts in my feed.  
-   - This user story is the same and the follower story, in regards to order of MVP.
 
 + Unfollow users- As a user, I want to unfollow users I no longer want to see posts from.  
-   - Added to future features for development on next sprint.
 
 ## Database design
 <img src="static/images" alt="" width="700" height="500">
@@ -192,7 +139,28 @@ Ipad Pro
 
 ## Bug Fixes:
 
-+ 
+### Production bugs:
++ Logo image: The logo for my website in the top corner was not rendering on the screen. The path from static files was wrong.
+   - Solution: Fixed by updating link in the path on the html page inside the img tag was an error in spelling jpg.  
++ Login automatically: Doesn't login automatically once sign up has been completed.
+   - Solution: Not fixed, still a bug with site, however the site redirect to login page once sign up so does effect user experience.
++ Image placeholder: No placeholder image for if user does not add a image to the post or profile. 
+   - Solution: Not fixed, need to add placeholder image to the project for post creation and profile.
++ Logout confirm: When logging out the user didn't have a confirm to ensure they wanted to logout.
+   - Solution: Fixed by added another html page called logout with an extention to my views.py function to enable a request.method = 'POST'.
++ Profile editing: Tried to allow users to edit there profiles once signed up.
+   - Solution: Fixed wanted uses to sign up and instantly make a profile. Once they click the profile page edit the image and text fields, had an error on my html page with my POST form as had action='POST' instead of method='POST'.
++ Edit and delete comments: Editing and deleting comment function not working when trying to render into post_detail.html page.
+   - Solution: My function in my views.py file works with models if I change the {% if request.user.is_authenticated and post.author == request.user %} to {% if comment %} however this allows every user to edit and delete anyones comment.
++ A tags: my link tags in html for login and sign up do not heighlight to show users they are clickable.
+   - Solution: Added text-decoration back to these tags to show user they are clickable.
+### Responsive Testing:
++ Lougout: When testing the responsiveness the logout image is slightly off middle of page.
+   - Solution: Add a media queiry so when on moblie view the logout is position center.
++ Profile image: Slightly squashed in mobile view.
+   - Added a media queiry so before the image start to get squashed it resizes.
++ Home page buttons: On the home page the buttons on the side of the post feed relocate to the bottom of the page on mobile screens this is because of bootstrap cols.
+   - This was a problem due to if the post feed gets very long it would take a long time to find these buttons. Fixed by keeping buttons to side of post on mobile screen.
 
 ## Credits:
 
@@ -226,20 +194,15 @@ Ipad Pro
 
 ## Future Features:
 
-+ DM messages- As a user, I want to send private messages to other users.  
-   - This remained in the out of the site and was a won't have. It has been added to the future features.
++ DM messages-   
 
-+ Follower feed post- As a user, I want to see a feed of posts from the people I follow.  
-   - Didn't have time to sort this user story as stuck to MVP, in future features.
++ Follower feed post- 
 
-+ Following users- As a user, I want to follow other users to see their posts in my feed.  
-   - This user story is the same and the follower story, in regards to order of MVP.
++ Following users- 
 
-+ Unfollow users- As a user, I want to unfollow users I no longer want to see posts from.  
-   - Added to future features for development on next sprint.
++ Unfollow users-
 
-+ + Search bar- As a user, I want to search for other users by username.  
-   - This function has been added to future features and didnt make it into the sprint and remained in the backlog
++ Search bar- 
 
 ## Acknowledgements
 
