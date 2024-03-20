@@ -45,7 +45,7 @@ def profile(request):
             messages.success(request, 'Updated')
             return redirect('profile')
     else:
-        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        form = ProfileForm(instance=request.user.profile)
     context = {
         'form': form,
         'profile': profile,

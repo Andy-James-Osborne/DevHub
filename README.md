@@ -152,8 +152,10 @@ Profile list page
    - Solution: Fixed wanted uses to sign up and instantly make a profile. Once they click the profile page edit the image and text fields, had an error on my html page with my POST form as had action='POST' instead of method='POST'.
 + Edit and delete comments: Editing and deleting comment function not working when trying to render into post_detail.html page.
    - Solution: My function in my views.py file works with models if I change the {% if request.user.is_authenticated and post.author == request.user %} to {% if comment %} however this allows every user to edit and delete anyones comment.
-+ A tags: my link tags in html for login and sign up do not heighlight to show users they are clickable.
++ A tags: My link tags in html for login and sign up do not heighlight to show users they are clickable.
    - Solution: Added text-decoration back to these tags to show user they are clickable.
++ Edit profile: Need information that is already on profile to render in form when edit at the moment the fields are blank when you edit the profile form.
+   - Solution: Needed to add this in the if statement of my edit profile views.py function 'form = ProfileForm(instance=request.user.profile)'.
 ### Responsive Testing:
 + Lougout: When testing the responsiveness the logout image is slightly off middle of page.
    - Solution: Add a media queiry so when on moblie view the logout is position center.
