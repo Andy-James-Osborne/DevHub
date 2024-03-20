@@ -27,17 +27,17 @@ This is a Full-Stack project with the use of django for the framework. I had two
 
 3. [Wireframes](#wireframes)
 
-4. [User Stories](#user-stories)
+4. [Agile Methodolgy](#agile-methodolgy)
 
-5. [Database design](#database-design)
+5. [User Stories](#user-stories)
 
-6. [Kanban Board](#kanban-board)
+6. [Database design](#database-design)
 
-7. [Scope](#scope)
+7. [Kanban Board](#kanban-board)
 
-8. [Testing](#testing)
+8. [Deployment](#deployment)
 
-9. [Deployment](#deployment)
+9. [Testing](#testing)
 
 10. [Bug Fixes](#bug-fixes)
 
@@ -87,6 +87,16 @@ Profile page
 Profile list page  
 <img src="static/images/ProfileListDevHub.JPG" alt="" width="700" height="500">
 
+## Agile Methodolgy:
+Before starting this project I tired to keep to the agile methodogy following best practise to planning and working on a project.
+
+To do this User stories were created to be able to get the nessisary designs in place.
+
+After gathering all the user stories put them onto my github repositor to create issue and create them labels and milstones to be organised and set into tasks.
+
+Then make a project board in github projects.
+
+You will see this further down the readme document in the kanban board.
 
 ## User Stories:
 
@@ -139,20 +149,107 @@ Profile list page
 <img src="static/images/DB-design.JPG" alt="" width="700" height="500">
 
 ## Kanban Board
-<img src="static/images/Kanban-board-for-DevHub.JPG" alt="Image kanban board gitHub" width="900" height="400">
+
+<img src="static/images/Kanban-board-for-DevHub.JPG" alt="Image kanban board gitHub" width="900" height="400">  
+
+Link to my github project board  
+https://github.com/users/Andy-James-Osborne/projects/9
+
+## Deployment:
+### Step 1
+1. To deploy the site I had to start by setting up a repository in GitHub.
+2. Then opened up my online IDE, I used Gitpod.
+3. First thing to do is download django with command pip install django I used the lastest version.
+4. Then you will need to install pip install gunicorn
+5. Once these where installed I created my project folder with django (django-admin startproject socialproject .)
+6. Now create an app in django this is where you will be mostly working in on this project (python manage.py startapp social)
+7. Then I installed database (pip install dj_database_url) again i installed the lastest version
+8. Also install Cloudinary with two installs (pip install dj3_cloudinary-storage, pip install urllib3)
+9. Also don't forget to pip freeze > requirements.txt to store all the requirements in a txt file
+
+### Step 2
+1. Added app name to setting.py file in the INSTALLED_APPS = ['social',]
+2. Migrate this change with python manage.py migrate
+3. Now run your local server (python manage.py runserver)
+4. will need to allow your local host by copy the HTTP header. I set mine out like this ALLOWED_HOSTS = ['.gitpod.io', '.herokuapp.com']
+
+### Step 3
+1. Now we need to deploy to Heroku by login/ make an account
+2. Start a new app
+3. Also open a database, the external database i used was ElephantSQL
+4. Attach the database to heroku in the config vars
+5. Will need to create an env.py file in dicretory so that the database is not published to github.
+6. Import the os into the env.py file
+7. os.environ["DATABASE_URL"] = "Paste in ElephantSQL database URL"
+8. os.environ["SECRET_KEY"] = "Make up your own randomSecretKey"
+9. Added 7 and 8 into the env.py file and then add secret key to config vars in heroku settings
+
+### Step 4
+1. Now we need to set up settings.py for the new database and secrect key
+2. import os
+import dj_database_url
+if os.path.isfile("env.py"):
+import env
+3. SECRET_KEY = os.environ.get('SECRET_KEY')
+4. Put 3 and 4 into your settings.py file
+5. comment out or delete the SQL lite database that come with django
+6. Add this in its place 
+DATABASES = {
+   'default':
+   dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+7. Now we need to mirgate the changes again
+
+### Step 5
+1. Open cloudinary and get the url from the dashboard
+2. Put this into your env.py file os.environ["CLOUDINARY_URL"] ="cloudinary://************************"
+3. Heroku now needs the cloudinary url added to the config vars
+4. Also add DISABLE_COLLECTSTATIC
+
+### Step 6
+1. Go to settings.py again to add cloudinary into installed apps
+INSTALLED_APPS = [
+…,
+'cloudinary_storage',
+'django.contrib.staticfiles',
+'cloudinary',
+…,
+]
+2. In the settings.py file under the static url add-
+STATICFILES_STORAGE =
+'cloudinary_storage.storage.StaticHashedCloudin
+aryStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR,
+'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR,
+'staticfiles')
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE =
+'cloudinary_storage.storage.MediaCloudinaryStor
+age'
+3. Also make sure templates are set up to settings.py
+4. TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
+5. Will also need to add a templates folder the best place to put it is inside your app mine is name social.
+6. make sure to add another file inside templates this file needs to have the same name as you app so the path would be social/temaplates/social/
+7. This is so django knows where to look for your HTML files.
+
+### Step 7
+1. You will also need to add media file and static files into the main directory
+2. Now make a Procfile to include web: gunicorn PROJ_NAME.wsgi
+3. Now it is all set up make sure to git add, git commit and git push
+4. You will also need to go back to heroku into the deploy tab to manually link your github
+5. Then in the deploy tab of heroku you will need to deploy branch
+
+### Forking project
+1. If you are folking this project make sure that to create a env.py and this is not pushed to github and make sure yours doesn't as well!
+2. To do this make sure the env.py file is in .gitignore
+3. Also you will need to install all the requirements.txt with the command pip install -r requirements.txt
+4. You should be then good to go as long as you have made an heroku account and elephantSQL account
+5. You can find the deployed link to the site in your deployments in github
 
 ## Testing:
 
 + You can reference the Testing.md page for a full breakdown of the site manual tests that have been preformed.
-
-## Deployment:
-
-1. Our deployment platform:
-   - The application has been deployed on GitHub.
-2. Connect your GitHub repository to the platform:
-   - Authorize the platform to access your repository and choose the specific branch to deploy (main). 
-3. Verify deployment:
-   - Accessed the project URL and tested it thoroughly to ensure everything works as expected.
 
 ## Bug Fixes:
 
