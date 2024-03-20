@@ -164,3 +164,4 @@ After changing image sizes by compressing them I have been able to score (95)
    - I have adding in these strings to follow pep8 standards.
 
 ## Features
+

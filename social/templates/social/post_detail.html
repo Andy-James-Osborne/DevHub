@@ -42,11 +42,8 @@
             </div>
             <div class="col-lg-4 mt-5">
                 <h3>Leave a comment:</h3>
-                <form method="post">
+                <form method="POST">
                     {% csrf_token %}
-                    <div>
-                        {{ form.author }}
-                    </div>
                     <div>
                         {{ form.body }}
                     </div>

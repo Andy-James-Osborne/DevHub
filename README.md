@@ -136,7 +136,7 @@ Profile list page
 + Unfollow users- As a user, I want to unfollow users I no longer want to see posts from.  
 
 ## Database design
-<img src="static/images" alt="" width="700" height="500">
+<img src="static/images/DB-design.JPG" alt="" width="700" height="500">
 
 ## Kanban Board
 <img src="static/images/Kanban-board-for-DevHub.JPG" alt="Image kanban board gitHub" width="900" height="400">

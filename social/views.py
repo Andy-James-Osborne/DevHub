@@ -76,15 +76,6 @@ def post_detail(request, pk):
     liked = False
 
     if request.method == "POST":
-        if 'like' in request.POST:
-            if request.user.is_authenticated:
-                if post.likes.filter(id=request.user.id).exists():
-                    post.likes.remove(request.user)
-                else:
-                    post.likes.add(request.user)
-        return redirect('post_detail', pk=post.pk)
-
-    if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False) 
@@ -93,6 +84,15 @@ def post_detail(request, pk):
             comment.save()
             messages.success(request, "Comment was successful.")
             return redirect('post_detail', pk=post.pk)
+    
+    if request.method == "POST":
+        if 'like' in request.POST:
+            if request.user.is_authenticated:
+                if post.likes.filter(id=request.user.id).exists():
+                    post.likes.remove(request.user)
+                else:
+                    post.likes.add(request.user)
+        return redirect('post_detail', pk=post.pk)
 
     comments = Comment.objects.filter(post=post).order_by('-created_on')
     liked = request.user.is_authenticated and post.likes.filter(id=request.user.id).exists()
