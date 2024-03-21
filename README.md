@@ -2,13 +2,13 @@
 
 # Project Overview:
 
-This is a Full-Stack project with the use of django for the framework. I had two weeks to design and create a site. The choosen project was a social media site with the idea to be able to connect user with each other for social interaction. Due to the sort time for this project there are a few features that I would include in the next sprint of this project to get it to the standard of a fully functioning social media site. However I have completed all MVP requirements within the timeframe and used KISS (keep it simple silly) with some features to ensure the site was ready for deployment.
+This is a Full-Stack project with the use of django for the framework. I had two weeks to design and create a site. The chosen project was a social media site with the idea to be able to connect the users with each other for social interaction. Due to the short time for this project there are a few features that I would include in the next sprint of this project to get it to the standard of a fully functioning social media site. However I have completed all MVP requirements within the timeframe and used KISS (keep it simple silly) with some features to ensure the site was ready for deployment.
 
 + Key Features:
    - Post feed for all users to see.
    - Interactive post feed to show post details once clicked on
    - All users can make their own post once they have logged in
-   - Are only able to view the post feed page if haven't created an account
+   - Unregistered users are only able to view the post feed page if haven't created an account
    - Sign in function allows users to have their own profile page which they can edit themseleves
    - Able to view other user info once logged in
    - Users have the ability to edit and delete their own post
@@ -60,7 +60,7 @@ I have kept with simple colours with a white background to make the website stan
    -  #118cd3
    - #ffc107
 
-+ I have used Bootstraps Primary colours of "btn-primary and btn-warning" throught my website for ease of use, not to over complicate the design and aim for a higher functioning website.
++ I have used Bootstraps Primary colours of "btn-primary and btn-warning" throughout my website for ease of use, not to over complicate the design and aim for a higher functioning website.
 + This was decided early on to enable me to focus on the database and functionality of the website. 
 + I also used a cdn simply css to help with styling of the site.
 + I have decided on the Bootstrap font-family that comes as standard as I know this is well tested and will work on most devices and browsers.
@@ -68,7 +68,7 @@ I have kept with simple colours with a white background to make the website stan
 <img src="static/images/color-select.JPG" alt="" width="200" height="100">
 
 ## Wireframes:
-+ Below are my wireframes where I used these sketches to design and structure my website, I started this at the beginning of the project, however some parts had to be updated throughout the project as some part had to be edited to work with the functionality and UX of the site.
++ Below are my wireframes where I used these sketches to design and structure my website, I started this at the beginning of the project, however some parts had to be updated throughout the project as some parts had to be edited to work with the functionality and UX of the site.
 
 Home page  
 <img src="static/images/HomepageDevHub.JPG" alt="Image of homescreen wireframes" width="700" height="500">
@@ -92,7 +92,7 @@ Profile list page
 <img src="static/images/ProfileListDevHub.JPG" alt="Image of profile list wireframes" width="700" height="500">
 
 ## Agile Methodology:
-Before starting this project I tired to keep to the agile methodogy following best practise to planning and working on a project.
+Before starting this project I tried to keep to the agile methodogy following best practise to planning and working on a project.
 
 To do this User stories were created to be able to get the necessary designs in place.
 
@@ -107,7 +107,7 @@ You will see this further down the readme document in the kanban board.
 ### Epic User Management:
 + Sign Up- As a user, I want to sign up for an account using my username and a password so I can sign in quickly.  
 
-+ Login- As a user, I want to log in to my existing account so I can keep all my post stored as a personal users.  
++ Login- As a user, I want to log in to my existing account so I can keep all my post stored as a personal user.  
 
 + Logout user- As a user, I want to logout with a "are you sure request?" before logging out so I can not logout by accident.  
 
@@ -122,7 +122,7 @@ You will see this further down the readme document in the kanban board.
 ### Epic Conent Management:
 + Responsive website- As a user, I want to use the site for all devices so I can access it anytime.  
 
-+ Admin CRUD- As an owner, I want to access the admin of the site to be able to Create/Read/Update/Delete all of the data add to my site so I can so i have full control over all the content.  
++ Admin CRUD- As an owner, I want to access the admin of the site to be able to Create/Read/Update/Delete all of the data added to my site so I can have full control over all the content.  
 
 + Delete posts- As a user, I want to delete my posts if I no longer want to share it so I can delete any mistakes or non relevant posts.  
 
@@ -141,16 +141,16 @@ You will see this further down the readme document in the kanban board.
 
 + View other user profile- As a user, I want to view profiles of other users and see their info so I can get to know them.  
 
-+ DM messages- As a user, I want to send private messages to other users so I can message other user in private.  
++ DM messages- As a user, I want to send private messages to other users so I can message them in private.  
 
-+ Follower feed- As a user, I want to see a feed of posts from the people I follow so I can see the most interest and relevant post to me.  
++ Follower feed- As a user, I want to see a feed of posts from the people I follow so I can see the most interesting and relevant posts for me.  
 
 + Following users- As a user, I want to follow other users to see their posts in my feed so I can keep up to date with the users I follow.  
 
 + Unfollow users- As a user, I want to unfollow users I no longer want to see posts from so I can keep my post feed clear of anything I have no interest in.  
 
 ## Database design
-+ I designed an database diagram to ensure I had models to follow for the structure of my site.
++ I designed a database diagram to ensure I had models to follow for the structure of my site.
 + I started off by writting them down on paper as was easier to edit throughout the project. However used https://dbdiagram.io/home/ to be able to design it online once the models where confirmed to work with my site.
 <img src="static/images/DB-design.JPG" alt="Database design" width="700" height="500">
 
@@ -163,54 +163,54 @@ https://github.com/users/Andy-James-Osborne/projects/9
 
 ## Deployment:
 ### Step 1
-1. To deploy the site I had to start by setting up a repository in GitHub
-2. Then opened up my online IDE, I used Gitpod
-3. First thing to do is download django with command pip install django I used the lastest version
-4. Then you will need to install- pip install gunicorn
-5. Once these where installed I created my project folder with django (django-admin startproject socialproject .)
-6. Now create an app in django this is where you will be mostly working in on this project (python manage.py startapp social)
-7. Then I installed database (pip install dj_database_url) again I installed the lastest version
-8. Also install Cloudinary with two installs (pip install dj3_cloudinary-storage, pip install urllib3)
-9. Also don't forget to pip freeze > requirements.txt to store all the requirements in a txt file
+1. Deploy the site by setting up a repository in GitHub
+2. Use online IDE, I used Gitpod
+3. Download django with command (pip install django) I used the lastest version
+4. Install- pip install gunicorn
+5. Create project folder with django (django-admin startproject socialproject .)
+6. Create an app in django this is where you will be mostly working on this project (python manage.py startapp social)
+7. Install database (pip install dj_database_url) again I installed the lastest version
+8. Install Cloudinary with two installs (pip install dj3_cloudinary-storage, pip install urllib3)
+9. Don't forget (pip freeze > requirements.txt) to store all the requirements in a txt file
 
 ### Step 2
-1. Added app name to setting.py file in the INSTALLED_APPS = ['social',]
-2. Migrate this change with python manage.py migrate
-3. Now run your local server (python manage.py runserver)
-4. will need to allow your local host by copying the HTTP header. I set mine out like this ALLOWED_HOSTS = ['.gitpod.io', '.herokuapp.com']
+1. Add app name to setting.py file in the INSTALLED_APPS = ['social',]
+2. Migrate this change with (python manage.py migrate)
+3. Run your local server (python manage.py runserver)
+4. Allow your local host by copying the HTTP header. I set mine out like this ALLOWED_HOSTS = ['.gitpod.io', '.herokuapp.com']
 
 ### Step 3
-1. Now we need to deploy to Heroku by login/ making an account
+1. Deploy to Heroku by logging in/ making an account
 2. Start a new app
-3. Also open a database, the external database I used was ElephantSQL
+3. Open a database, the external database I used was ElephantSQL
 4. Attach the database to Heroku in the config vars
-5. Will need to create an env.py file in dicretory so that the sensitive info is not published to github.
+5. Create an env.py file in main dicretory so that the sensitive information is not published to github.
 6. Import the os into the env.py file
-7. os.environ["DATABASE_URL"] = "Paste in ElephantSQL database URL"
-8. os.environ["SECRET_KEY"] = "Make up your own randomSecretKey"
-9. Added 7 and 8 into the env.py file and then add a secret key to config vars in Heroku settings
+7. Copy into env.py file (os.environ["DATABASE_URL"] = "Paste in ElephantSQL database URL")
+8. Copy into env.py file (os.environ["SECRET_KEY"] = "Make up your own randomSecretKey")
+9. Add a secret key to config vars in Heroku settings
 
 ### Step 4
-1. Now we need to set up settings.py for the new database and secrect key
-2. import os
+1. Set up settings.py for the new database and secrect key
+2. Add to settings.py file 
+import os
 import dj_database_url
    if os.path.isfile("env.py"):
 import env
-3. SECRET_KEY = os.environ.get('SECRET_KEY')
-4. Put 3 and 4 into your settings.py file
-5. comment out or delete the SQL lite database that come with django
-6. Add this in its place 
+3. Add to settings.py file SECRET_KEY = os.environ.get('SECRET_KEY')
+4. Comment out or delete the SQL lite database that comes with django
+5. Add this in its place 
 DATABASES = {
    'default':
    dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-7. Now we need to mirgate the changes again
+7. Mrigate the changes again
 
 ### Step 5
 1. Open cloudinary and get the url from the dashboard
 2. Put this into your env.py file os.environ["CLOUDINARY_URL"] ="cloudinary://************************"
 3. Heroku now needs the cloudinary url added to the config vars
-4. Also add DISABLE_COLLECTSTATIC
+4. Add DISABLE_COLLECTSTATIC to config vars
 
 ### Step 6
 1. Go to settings.py again to add cloudinary into installed apps
@@ -220,7 +220,8 @@ INSTALLED_APPS = [
 'django.contrib.staticfiles',
 'cloudinary',
 …,
-] (Make sure in this order)
+] 
+(Make sure in this order)
 2. In the settings.py file under the static url add-
 STATICFILES_STORAGE =
 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
@@ -228,25 +229,25 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
-3. Also make sure templates are set up to settings.py
+3. Ensure templates are set up to settings.py
 4. TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
-5. Will also need to add a templates folder the best place to put it is inside your app, mine is name social.
-6. make sure to add another file inside templates this file needs to have the same name as your app so the path would be social/temaplates/social/
-7. This is so django knows where to look for your HTML files (social/home.html)
+5. Add a templates folder, the best place to put it is inside your app, mine is name social.
+6. Add another file inside templates, this file needs to have the same name as your app so the path would be (social/temaplates/social/)
+7. This is to enable django to know where to look for your HTML files e.g (social/home.html)
 
 ### Step 7
-1. You will also need to add media file and static files into the main directory
-2. Now make a Procfile to include (web: gunicorn PROJ_NAME.wsgi)
-3. Now it is all set up make sure to git add, git commit and git push
-4. You will also need to go back to Heroku into the deploy tab to manually link your github
-5. Then in the deploy tab of Heroku you will need to deploy branch
+1. Add media file and static files into the main directory
+2. Make a Procfile to include (web: gunicorn PROJ_NAME.wsgi)
+3. All set up make sure to git add, git commit and git push
+4. Go back to Heroku into the deploy tab to manually link your github
+5. In the deploy tab of Heroku you will need to deploy the branch
 
 ### Forking project
-1. If you are folking this project make sure that to create an env.py. Also make sure this is not pushed to github!
-2. To do this make sure the env.py file is in .gitignore
-3. Also you will need to install all the requirements.txt with the command (pip install -r requirements.txt)
-4. You should be then good to go as long as you have made an Heroku account and elephantSQL account
-5. You can find the deployed link to the site in your deployments in github
+1. If you are forking this project make sure to create an env.py file. Make sure this is not pushed to github!
+2. Add env.py file into .gitignore (This will ensure env.py file is not published to github)
+3. Install all the requirements.txt with the command (pip install -r requirements.txt)
+4. Ensure you have made an Heroku and elephantSQL account
+5. Find the deployed link to your site in your deployments in github
 
 ### Accessing the admin
 + As a super user to access the admin page to control the site you will have to add (/admin) to the end of the url.
@@ -281,16 +282,16 @@ DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
    - Solution: My function in my views.py file works with models if I change the {% if request.user.is_authenticated and post.author == request.user %} to {% if comment %} however this allows every user to edit and delete anyone's comment.
 
 + A tags: My link tags in html for login and sign up do not highlight to show users they are clickable.
-   - Solution: Added text-decoration back to these tags to show user they are clickable.
+   - Solution: Added text-decoration back to these tags to show users they are clickable.
 
-+ Edit profile: Need information that is already on profile to render in form when edit at the moment the fields are blank when you edit the profile form.
++ Edit profile: Need information that is already on profile to render in the form when edit at the moment the fields are blank when you edit the profile form.
    - Solution: Needed to add this in the if statement of my edit profile views.py function 'form = ProfileForm(instance=request.user.profile)'.
 
 + Comment on posts: Stop working when added like if statement to post_detail function in my views.py file.
    - Solution: Had to rearrange the if statements in the function as the likes if statement was in wrong position.
 
 ### Responsive Testing:
-+ Lougout: When testing the responsiveness the logout image is slightly off middle of page.
++ Logout: When testing the responsiveness the logout image is slightly out of alignment.
    - Solution: Add a media queiry so when on moblie view the logout is position center.
 + Profile image: Slightly squashed in mobile view.
    - Added a media query so before the image start to get squashed it resizes.
@@ -326,11 +327,11 @@ DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
 
 ## Future Features:
 
-+ DM messages- To enable user to have a connect link to their own private chat room with another users  
++ DM messages- To enable a user to have a direct link to their own private chat room with another user.  
 
-+ Follower post feed- To only be able to see the users that you follow post feed
++ Follower post feed- To only be able to see the users that you are following on the post feed.
 
-+ Following users- The ability to follow users you are intrested in
++ Following users- The ability to follow users you are intrested in.
 
 + Unfollow users- The ability to unfollow any users that are no longer of interest.
 
@@ -357,5 +358,5 @@ DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
 
 ## Acknowledgements
 
-+ Thanks to my fellow Code Institute students for all the support and a special thanks to Ben Fashan for constant support and help for past two weeks of final project.
++ Thanks to my fellow Code Institute students for all the support and a special thanks to Ben Fashan for constant support and help for past two weeks of the final project.
 + Thanks to Iris Smok for all the constant support.
