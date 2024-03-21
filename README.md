@@ -66,6 +66,8 @@ I have kept with simple colours with a white background to make the website stan
 <img src="static/images/color-select.JPG" alt="" width="200" height="100">
 
 ## Wireframes:
++ Below are my wireframes where I used these sketches to design and structure my website, I started this at the beginning of the project, however some parts had to be updated throughout the project as some part had to be edited to work with the functionalllity and UX of the site.
+
 Home page  
 <img src="static/images/HomepageDevHub.JPG" alt="Image of homescreen wireframes" width="700" height="500">
 
@@ -101,51 +103,53 @@ You will see this further down the readme document in the kanban board.
 ## User Stories:
 
 ### Epic User Management:
-+ Sign Up- As a user, I want to sign up for an account using my username and a password.  
++ Sign Up- As a user, I want to sign up for an account using my username and a password so I can sign in quickly.  
 
-+ Login- As a user, I want to log in to my existing account.  
++ Login- As a user, I want to log in to my existing account so I can keep all my post stored as a personal users.  
 
-+ Logout user- As a user, I want to logout with a are you sure request before logging out.  
++ Logout user- As a user, I want to logout with a "are you sure request?" before logging out so I can not logout by accident.  
 
-+ Notifactions- As a user, I want to receive notifications for confirmation of e.g login/out.  
++ Notifactions- As a user, I want to receive notifications for confirmation of e.g login/out so I can be sure the action was successful.  
 
-+ View my profile- As a user, I want to view my profile and see my posts, followers, and following.  
++ View my profile- As a user, I want to view my profile and see my posts, followers, and following so I can Link with other user and view all my info on my personal page.  
 
-+ Edit my profile- As a user, I want to edit my profile information.  
++ Edit my profile- As a user, I want to edit my profile information so I can edit any info that changes.  
 
-+ Account shown in nav- As a user, I want to be able to be notified I am in my account by seeing the username in the navbar.  
++ Account shown in nav- As a user, I want to be able to be notified I am in my account by seeing the username in the navbar so I can be sure I am on the right account.  
 
 ### Epic Conent Management:
-+ Responsive website- As a user, I want to use the site for all devices.  
++ Responsive website- As a user, I want to use the site for all devices so I can access it anytime.  
 
-+ Admin CRUD- As an owner, I want to access the admin of the site to be able to Create/Read/Update/Delete all of the data add to my site.  
++ Admin CRUD- As an owner, I want to access the admin of the site to be able to Create/Read/Update/Delete all of the data add to my site so I can so i have full control over all the content.  
 
-+ Delete posts- As a user, I want to delete my posts if I no longer want to share it.  
++ Delete posts- As a user, I want to delete my posts if I no longer want to share it so I can delete any mistakes or non relevant posts.  
 
-+ Edit posts- As a user, I want to edit my posts if a mistake was made.  
++ Edit posts- As a user, I want to edit my posts if a mistake was made so I can edit the post instead of having to re-write the whole post again.  
 
-+ Create a profile- As a user, I want a profile with a username, bio, and profile picture.  
++ Create a profile- As a user, I want a profile with a username, bio, and profile picture so I can personalise my account.  
 
-+ Search bar- As a user, I want to search for other users by username.  
++ Search bar- As a user, I want to search for other users by username so I can find other users easily.  
 
 ### Epic Social Interaction:
-+ Comment on post- As a user, I want to comment on posts to share my thoughts or ask questions.  
++ Comment on post- As a user, I want to comment on posts to share my thoughts or ask questions so I can interact with other users.  
 
-+ Like posts- As a user, I want to like posts from other users.  
++ Like posts- As a user, I want to like posts from other users so I can show user easily that I like their posts.  
 
-+ Create Posts- As a user, I want to create posts that can include text and images.  
++ Create Posts- As a user, I want to create posts that can include text and images so I can make my post more interesting.  
 
-+ View other user profile- As a user, I want to view profiles of other users and see their posts.  
++ View other user profile- As a user, I want to view profiles of other users and see their info so I can get to know them.  
 
-+ DM messages- As a user, I want to send private messages to other users.  
++ DM messages- As a user, I want to send private messages to other users so I can message other user in private.  
 
-+ Follower feed- As a user, I want to see a feed of posts from the people I follow.  
++ Follower feed- As a user, I want to see a feed of posts from the people I follow so I can see the most interest and relevant post to me.  
 
-+ Following users- As a user, I want to follow other users to see their posts in my feed.  
++ Following users- As a user, I want to follow other users to see their posts in my feed so I can keep up to date with the users I follow.  
 
-+ Unfollow users- As a user, I want to unfollow users I no longer want to see posts from.  
++ Unfollow users- As a user, I want to unfollow users I no longer want to see posts from so I can keep my post feed clear of anything I have no interest in.  
 
 ## Database design
++ I designed an database diagram to ensure I had models to follow for the structure of my site.
++ I started off by writting them down on paper as was easier to edit throughout the project. However used https://dbdiagram.io/home/ to be able to design it online once the models where confirmed to work with my site.
 <img src="static/images/DB-design.JPG" alt="" width="700" height="500">
 
 ## Kanban Board
@@ -247,6 +251,13 @@ age'
 4. You should be then good to go as long as you have made an heroku account and elephantSQL account
 5. You can find the deployed link to the site in your deployments in github
 
+### Accessing the admin
++ As a super user to access the admin page to control the site you will have to add /admin to the end of the url.
+   - Example: https://devhub-django-b4ed0d2c4454.herokuapp.com/admin
+
+### Accessin the site for regular users
++ https://devhub-django-b4ed0d2c4454.herokuapp.com/
+
 ## Testing:
 
 + You can reference the Testing.md page for a full breakdown of the site manual tests that have been preformed.
@@ -255,28 +266,37 @@ age'
 
 ### Production bugs:
 + Logo image: The logo for my website in the top corner was not rendering on the screen. The path from static files was wrong.
-   - Solution: Fixed by updating link in the path on the html page inside the img tag was an error in spelling jpg.  
+   - Solution: Fixed by updating link in the path on the html page inside the img tag was an error in spelling jpg. 
+
 + Login automatically: Doesn't login automatically once sign up has been completed.
    - Solution: Not fixed, still a bug with site, however the site redirect to login page once sign up so does effect user experience.
+
 + Image placeholder: No placeholder image for if user does not add a image to the post or profile. 
    - Solution: Not fixed, need to add placeholder image to the project for post creation and profile.
+
 + Logout confirm: When logging out the user didn't have a confirm to ensure they wanted to logout.
-   - Solution: Fixed by added another html page called logout with an extention to my views.py function to enable a request.method = 'POST'.
+   - Solution: Fixed by added another html page called logout with an extension to my views.py function to enable a request.method = 'POST'.
+
 + Profile editing: Tried to allow users to edit there profiles once signed up.
    - Solution: Fixed wanted uses to sign up and instantly make a profile. Once they click the profile page edit the image and text fields, had an error on my html page with my POST form as had action='POST' instead of method='POST'.
+
 + Edit and delete comments: Editing and deleting comment function not working when trying to render into post_detail.html page.
-   - Solution: My function in my views.py file works with models if I change the {% if request.user.is_authenticated and post.author == request.user %} to {% if comment %} however this allows every user to edit and delete anyones comment.
-+ A tags: My link tags in html for login and sign up do not heighlight to show users they are clickable.
+   - Solution: My function in my views.py file works with models if I change the {% if request.user.is_authenticated and post.author == request.user %} to {% if comment %} however this allows every user to edit and delete anyone's comment.
+
++ A tags: My link tags in html for login and sign up do not highlight to show users they are clickable.
    - Solution: Added text-decoration back to these tags to show user they are clickable.
+
 + Edit profile: Need information that is already on profile to render in form when edit at the moment the fields are blank when you edit the profile form.
    - Solution: Needed to add this in the if statement of my edit profile views.py function 'form = ProfileForm(instance=request.user.profile)'.
+
 + Comment on posts: Stop working when added like if statement to post_detail function in my views.py file.
    - Solution: Had to rearrange the if statements in the function as the likes if statement was in wrong position.
+
 ### Responsive Testing:
 + Lougout: When testing the responsiveness the logout image is slightly off middle of page.
    - Solution: Add a media queiry so when on moblie view the logout is position center.
 + Profile image: Slightly squashed in mobile view.
-   - Added a media queiry so before the image start to get squashed it resizes.
+   - Added a media query so before the image start to get squashed it resizes.
 + Home page buttons: On the home page the buttons on the side of the post feed relocate to the bottom of the page on mobile screens this is because of bootstrap cols.
    - This was a problem due to if the post feed gets very long it would take a long time to find these buttons. Fixed by keeping buttons to side of post on mobile screen.
 
