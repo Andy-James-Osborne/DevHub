@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
+    """
+    Profile model for users to store their personal info
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     profile_picture = CloudinaryField('pro_pic', default='placeholder', blank=True, null=True)
@@ -15,6 +18,9 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
+    """
+    Post model for user to add text and image to the website
+    """
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = CloudinaryField('post_pic', blank=True)
@@ -36,6 +42,9 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Design so user can comment on user post
+    """
     post = models.ForeignKey("Post", on_delete=models.CASCADE)
     author = models.CharField(max_length=60)
     body = models.TextField()

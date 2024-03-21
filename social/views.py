@@ -21,6 +21,7 @@ def home(request):
 @login_required(login_url="login")
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
+    # Excludes the user that is logged in
     return render(request, 'social/profile_list.html', {"profiles": profiles})
 
 
@@ -33,6 +34,7 @@ def profile_create(request):
             profile.user = request.user
             # Associate profile with current user
             profile.save()
+            # Save the user profile
             messages.success(request, 'Profile Created!')
             return redirect('profile')
             # Redirect to profile page after creation
@@ -52,6 +54,7 @@ def profile(request):
             return redirect('profile')
     else:
         form = ProfileForm(instance=request.user.profile)
+        # Keeps the user information already filled out previously
     context = {
         'form': form,
         'profile': profile,
@@ -66,7 +69,7 @@ def create_post(request):
         if form.is_valid():
             post = form.save(commit=False)  # Don't save just yet
             post.author = request.user  # Assign current user as author
-            post.save()
+            post.save() # Save post
             messages.success(request, "Post was created successfully.")
             return redirect('home')  # Redirect to your desired page
     else:
@@ -80,15 +83,18 @@ def create_post(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     form = CommentForm()  # Form for comments
-    liked = False
+    liked = False # Likes are default to none
 
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
+            # Don't save yet
             comment.post = post
             comment.author = request.user
+            # Assign the user
             comment.save()
+            # Save comment
             messages.success(request, "Comment was successful.")
             return redirect('post_detail', pk=post.pk)
 
@@ -97,8 +103,10 @@ def post_detail(request, pk):
             if request.user.is_authenticated:
                 if post.likes.filter(id=request.user.id).exists():
                     post.likes.remove(request.user)
+                    # If post is already liked it will be removed
                 else:
                     post.likes.add(request.user)
+                    # If post isn't liked will be added one like
         return redirect('post_detail', pk=post.pk)
 
     comments = Comment.objects.filter(post=post).order_by('-created_on')
@@ -116,7 +124,7 @@ def post_detail(request, pk):
 def edit_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
-    # Check if the user is authorized to edit this post (optional)
+    # Check if the user is authorized to edit this post
     if post.author != request.user:
         return redirect('home', pk=pk)  # Redirect to post detail if not authorized
 
@@ -140,7 +148,7 @@ def edit_post(request, pk):
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        post.delete()
+        post.delete() # Delete post
         messages.success(request, "Post was deleted successfully.")
         return redirect('home')  # Redirect to homepage or a success page after deletion
     else:
@@ -176,7 +184,7 @@ def delete_comment(request, pk):
     post = comment.post
 
     if request.method == "POST":
-        comment.delete()
+        comment.delete() # Delete comment
         messages.success(request, "Comment was deleted successfully.")
         return redirect('post_detail', pk=post.pk)
 
@@ -193,11 +201,11 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save() # Save user
             messages.success(request, "Sign up was successful.")
-            return redirect('login')
+            return redirect('login') # return to login
     else:
-        form = UserCreationForm()
+        form = UserCreationForm() # Otherwise back to sign up form
     context = {'form': form}
     return render(request, 'social/signup.html', context)
 
@@ -207,6 +215,7 @@ def login_user(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
+        # As long as username and password match data stored
         if user is not None:
             login(request, user)
             messages.success(request, "Login was successful.")
@@ -217,6 +226,7 @@ def login_user(request):
 
     else:
         form = AuthenticationForm()
+        # Otherwise return to the login form
     context = {'form': form}
     return render(request, 'social/login.html', context)
 
@@ -226,5 +236,6 @@ def logout_user(request):
         logout(request)
         messages.success(request, "Logout was successful.")
         return redirect('login')
+        # When logged out return to login page
     else:
         return render(request, 'social/logout.html')
