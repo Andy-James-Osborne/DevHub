@@ -11,7 +11,7 @@ Any user story that wasn't completed in this sprint has been moved to the future
 + Login- As a user, I want to log in to my existing account.  
 <img src="static/images/Login-user-story.JPG" alt="Login page" width="1000" height="500">
 
-+ Logout user- As a user, I want to logout with a are you sure request before logging out.  
++ Logout user- As a user, I want to logout with an "are you sure?" request before logging out.  
 <img src="static/images/Logout-user-story.JPG" alt="Logout page" width="1000" height="500">
 
 + Notifactions- As a user, I want to receive notifications for confirmation of e.g login/out.  
@@ -33,7 +33,7 @@ Any user story that wasn't completed in this sprint has been moved to the future
 
 ### Epic Conent Management:
 + Responsive website- As a user, I want to use the site for all devices.  
-   - This user story was full tested in the responsive section of this testing document. Refer to the responsiveness section.
+   - This user story was fully tested in the responsive section of this testing document. Refer to the responsiveness section.
 
 + Admin CRUD- As an owner, I want to access the admin of the site to be able to Create/Read/Update/Delete all of the data added to my site.  
 <img src="static/images/admin.JPG" alt="Admin page" width="1000" height="500">
@@ -45,7 +45,7 @@ Any user story that wasn't completed in this sprint has been moved to the future
 <img src="static/images/edit-post-user-story.JPG" alt="Edit post form" width="1000" height="500">
 
 + Create a profile- As a user, I want a profile with a username, bio, and profile picture.  
-   - Profile is automatic made when you sign up.
+   - Profile is automatically made when you sign up.
 
 + Search bar- As a user, I want to search for other users by username.  
    - This function has been added to future features and didnt make it into the sprint and remains in the backlog.
@@ -67,19 +67,19 @@ Any user story that wasn't completed in this sprint has been moved to the future
    - This remained in the backlog and was a "won't have". It has been added to the future features.
 
 + Follower feed post- As a user, I want to see a feed of posts from the people I follow.  
-   - Didn't have time to sort this user story as stuck to MVP, this user story is in future features.
+   - Didn't have time to sort this user story as was focused on MVP, this user story is in future features.
 
 + Following users- As a user, I want to follow other users to see their posts in my feed.  
-   - This user story is the same and the follower story, in regards to order of MVP. Added to future features.
+   - This user story is the same as the follower story, in regards to order of MVP. Added to future features.
 
-+ Unfollow users- As a user, I want to unfollow users I no longer want to see posts from.  
++ Unfollow users- As a user, I want to unfollow users that I no longer want to see posts from.  
    - Added to future features for development on next sprint.
 
 ## Responsiveness
 
 <img src="static/images/Responsiveness-table.JPG" alt="Testing responsiveness table" width="1200" height="500">
 
-Tested through a range of screen sizes to check for responsiveness, I have included screenshots as proof of responsiveness.
+Tested through a range of screen sizes to check for responsiveness. I have included screenshots as proof of responsiveness.
 
 Iphone XR  
 <img src="static/images/iphone-main.JPG" alt="Home page iphone" width="200" height="500">
@@ -124,7 +124,7 @@ I used the dev tools to check the visual for phones, tablets and Desktop.
 
 
 ## Bugs
-All bugs are location in the README.md document
+All bugs are located in the README.md document
 
 ## Lighthouse Report
 <img src="static/images/Lighthouse-first-test.JPG" alt="" width="700" height="500">  
@@ -164,8 +164,8 @@ However everytime a user uploads a large image to the site the performance goes 
 I used the python test tool pep8 from code institute https://pep8ci.herokuapp.com/
 I went through every file with .py
 
-After viewing and editing my code only three files haven't pass on everything.
-This is because when I indented the code on a new line as was over 79 characters it came up with blank line error instead so i decided to stay with longer code as I believe it looks better and easier to read.
+After viewing and editing my code only three files haven't passed on everything.
+This is because when I indented the code on a new line as it was over 79 characters, it came up with blank line error instead so I decided to stay with longer code as I believe it looks better and easier to read.
 The files with > 79 lines:
 + settings.py
 + models.py
